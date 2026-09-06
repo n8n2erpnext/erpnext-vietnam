@@ -42,7 +42,8 @@ Source of truth: host workspace `/home/ubuntu/n8n2erpnext/.erpnext-vietnam-local
 - [P4B implemented] Explicit adapter registry/capability checks, Company+endpoint gateway gates, immutable audit attempts, timeout→UNKNOWN→reconcile semantics and sandbox-only rollback UAT harness.
 - [P4B gate CLOSED 2026-09-06] Live rollback UAT proved synthetic timeout→UNKNOWN, blind retry blocked, RECONCILE→ACCEPTED, exactly one provider submit call, immutable 3-attempt audit trail, zero GL/Journal Entry change and zero persistent gateway/submission records after rollback.
 - [P4C implemented] Bridge `VN E-Invoice` to `VN Submission` with explicit manual Queue/Submit/Reconcile actions and status-driven Desk buttons; Sales Invoice hooks remain preparation-only and never auto-transport.
-- [P4C live gate next] Run rollback UAT through E-Invoice → Queue → synthetic timeout → UNKNOWN → blocked retry → Reconcile → ACCEPTED using an existing submitted Sales Invoice without mutating it.
+- [P4C gate CLOSED 2026-09-06] Live rollback UAT on an existing submitted Sales Invoice proved Queue→READY, synthetic timeout→UNKNOWN, blind retry blocked, Reconcile→ACCEPTED, exactly one provider submit call, zero GL/Journal Entry change and zero persistent e-invoice/gateway records after rollback.
+- [P4D next] Standardize accepted-provider evidence propagation and immutable archive metadata without assuming any vendor-specific schema.
 - Tax/BHXH authority-specific direct-upload serializers only after an official machine schema/version is pinned; no schema is inferred from PDFs or UI screenshots.
 - No provider credentials or private keys in ordinary DocTypes.
 

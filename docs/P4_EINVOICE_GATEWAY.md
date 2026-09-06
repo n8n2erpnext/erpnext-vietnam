@@ -1,6 +1,6 @@
 # P4 — E-Invoice and Compliance Gateway
 
-Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway orchestration live rollback gate passed.
+Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway gate passed; P4C explicit e-invoice bridge live rollback gate passed.
 
 ## Legal/source boundary
 
@@ -54,3 +54,10 @@ A Prepared `VN E-Invoice` can be manually queued into `VN Submission`. Queueing 
 The Desk form exposes status-driven manual actions only: Prepared → **Queue for Submission**, Queued → **Submit**, and Unknown/Submitting → **Reconcile**. The Sales Invoice `on_submit` hook is unchanged and remains local preparation-only. There is no automatic Queue or Submit path from ERPNext accounting documents.
 
 Submission status is mirrored back onto `VN E-Invoice`; an ambiguous Submit sets both records to Unknown, and only Reconcile can resolve provider truth. Provider external references are recorded as request references without pretending they are final tax-authority invoice codes.
+
+
+## P4C live rollback result — 2026-09-06
+
+The bridge UAT used the already-submitted Sales Invoice `ACC-SINV-2026-00029` only as a read-only source reference. It did not save, amend, cancel or resubmit that invoice. The temporary e-invoice/profile/endpoint/settings/submission records existed only inside the rollback transaction.
+
+The observed flow was `Queue → VN Submission READY → Submit/UNKNOWN → blind retry blocked → Reconcile/ACCEPTED`. The sandbox provider Submit counter was exactly 1. GL Entry remained 251 and Journal Entry remained 2 throughout. After rollback, `VN Localization Settings`, `VN Integration Endpoint`, `VN E-Invoice Profile`, `VN E-Invoice`, `VN Submission`, and `VN Submission Attempt` all returned to zero. HTTP remained 200.
