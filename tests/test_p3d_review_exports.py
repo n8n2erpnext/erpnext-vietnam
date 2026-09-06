@@ -93,6 +93,16 @@ class TestP3DReviewExports(unittest.TestCase):
         self.assertIn("download_tax_declaration_review", source)
         self.assertIn("download_social_insurance_export_review", source)
 
+    def test_doctype_ui_only_exposes_review_exports_when_ready(self):
+        from pathlib import Path
+        for slug in ("vn_tax_declaration", "vn_social_insurance_export"):
+            source = Path(f"erpnext_vietnam/vietnam_localization/doctype/{slug}/{slug}.js").read_text()
+            self.assertIn('adapter_status !== "Ready"', source)
+            self.assertIn('status === "Voided"', source)
+            self.assertIn('__("Review XLSX")', source)
+            self.assertIn('__("Review XML")', source)
+            self.assertIn('/api/method/', source)
+
 
 class PathLike:
     @staticmethod

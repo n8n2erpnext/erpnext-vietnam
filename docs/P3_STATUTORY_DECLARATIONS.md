@@ -48,3 +48,5 @@ A Ready adapter can be exported as deterministic XML or XLSX for human review. B
 The download APIs are permission-gated, reject Voided or `Needs Review` documents, and re-check the persisted adapter payload hash before serialization. Filenames include `-review` and the package metadata explicitly declares `human_review_not_direct_government_upload`. This is intentional: a legal form layout and a tax/BHXH authority machine-upload envelope are different contracts. The latter must not be invented from a PDF or HTKK UI; it is added only after an official machine schema/version is pinned.
 
 P3 therefore remains fail-closed. A package can be useful for accountant review without being misrepresented as a government-upload file, and no export path calls `VN Submission`, the Compliance Gateway or any external service.
+
+When a prepared statutory document has `adapter_status = Ready`, its form view exposes **Export → Review XLSX** and **Export → Review XML**. The buttons are hidden for new, Voided or `Needs Review` records.
