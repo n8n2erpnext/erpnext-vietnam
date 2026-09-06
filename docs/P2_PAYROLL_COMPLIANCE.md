@@ -1,6 +1,6 @@
 # P2 — Vietnam Payroll Compliance
 
-Status: P2A/P2B implementation checkpoint; live parallel-payroll UAT remains required before a legal-compliance release label.
+Status: P2A/P2B/P2C implementation checkpoint; live parallel-payroll UAT remains required before the P2 release gate.
 
 ## Boundary
 
@@ -39,6 +39,14 @@ On validate, when Company payroll compliance is enabled, P2 resolves the active 
 
 On submit, P2 creates immutable `VN Payroll Calculation Line` records. Their canonical SHA-256 excludes the generated Salary Slip name so draft naming does not alter the evidence hash. Updating laws later creates new effective-dated rule versions and does not rewrite historical submitted Salary Slip evidence.
 
-## Not implemented in this checkpoint
+## P2C reconciliation and accrual preview
 
-P2 does not yet insert HRMS deduction rows, create employer-contribution Journal Entries, or reconcile configured Salary Components against the independent statutory calculation. That is P2C. P3 owns 05/KK-TNCN, 05/QTT-TNCN and BHXH administrative exports.
+`VN Contribution Component` maps each employee-side statutory line (`PIT_WITHHOLDING`, `BHXH_EE`, `BHYT_EE`, `BHTN_EE`) to one reviewed HRMS Salary Component for one Company and effective period. Released overlapping mappings are rejected, and one Salary Component cannot silently represent multiple employee statutory lines during the same effective period.
+
+`VN Payroll Reconciliation` compares immutable P2 evidence against the actual submitted Salary Slip deductions. It reports `MATCH`, `VARIANCE`, `UNMAPPED`, `NO_EVIDENCE` or evidence conflict rather than correcting payroll automatically. Employer-side lines are shown as expected-only because they do not reduce employee net pay.
+
+The employer accrual API resolves semantic payable roles (`3335`, `3383`, `3384`, `3386` are catalog metadata behind Company-specific `VN COA Mapping`) and returns a read-only credit-side preview. It deliberately does not select expense allocation, create a Journal Entry or submit accounting. Expense allocation across production/sales/admin functions remains an explicit accounting decision.
+
+## P2 release gate still pending
+
+The site must run at least one controlled parallel payroll with reviewed Salary Components, employee tax/social profiles, wage region, contribution mappings and Company localization enabled. The independent P2 result must reconcile to HRMS deductions and the accountant-reviewed employer accrual before P2 is labeled production compliance-ready. P3 owns 05/KK-TNCN, 05/QTT-TNCN and BHXH administrative exports.
