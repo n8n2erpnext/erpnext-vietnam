@@ -40,3 +40,7 @@ P0 is complete only when all eight foundation DocTypes migrate on a real Frappe 
 ### Setup preview contract
 
 `preview_localization_profile` returns the exact setup snapshot, SHA-256 hash, warnings and planned changes without writing Company configuration. Applying the wizard uses the same snapshot builder, so preview and apply cannot drift silently. Installation may seed only neutral reference data (`VN Business Profile`); it must never enable a government-facing endpoint or mutate submitted accounting/payroll records.
+
+### Existing-site setup entry point
+
+Frappe v16 only tracks the built-in `frappe` and `erpnext` setup wizards in `Installed Applications`; third-party apps are explicitly marked `has_setup_wizard = 0`. Therefore `erpnext_vietnam` supports both paths without patching core: the standard setup-wizard hooks participate when the app is present during initial site setup, while existing ERPNext sites use the native Desk Page `/app/vn-setup-wizard`. Both paths call the same preview/apply backend and produce the same audited setup snapshot.
