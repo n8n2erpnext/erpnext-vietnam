@@ -50,3 +50,5 @@ The download APIs are permission-gated, reject Voided or `Needs Review` document
 P3 therefore remains fail-closed. A package can be useful for accountant review without being misrepresented as a government-upload file, and no export path calls `VN Submission`, the Compliance Gateway or any external service.
 
 When a prepared statutory document has `adapter_status = Ready`, its form view exposes **Export → Review XLSX** and **Export → Review XML**. The buttons are hidden for new, Voided or `Needs Review` records.
+
+A rollback-only Frappe UAT harness (`erpnext_vietnam.declarations.uat.run_review_export_uat`) creates one temporary Ready tax declaration and one temporary Ready BHXH export, reloads them through the same permission/hash gate used by download APIs, serializes XML/XLSX, verifies GL/Journal Entry/VN Submission counts are unchanged, then rolls the transaction back and asserts zero persistence drift.
