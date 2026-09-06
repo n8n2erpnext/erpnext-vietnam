@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2026-09-06 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-09-06 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Vietnam Localization",
+ "name": "vn-localization-health",
+ "owner": "Administrator",
+ "page_name": "vn-localization-health",
+ "roles": [{"role": "System Manager"}],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Vietnam Localization Health"
+}
