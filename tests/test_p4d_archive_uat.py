@@ -25,6 +25,7 @@ class TestP4DArchiveUAT(unittest.TestCase):
         self.assertIn("delete_file(file_url)", SOURCE)
         self.assertIn("os.remove(path)", SOURCE)
         self.assertIn("physical_artifacts_clean", SOURCE)
+        self.assertIn("frappe.db.after_commit.add", SOURCE)
         self.assertNotIn("frappe.db.commit()", SOURCE)
         self.assertIn('"GL Entry"', SOURCE)
         self.assertIn('"Journal Entry"', SOURCE)

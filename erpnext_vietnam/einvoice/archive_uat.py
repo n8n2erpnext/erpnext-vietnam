@@ -157,6 +157,9 @@ def run_einvoice_archive_rollback_uat(sales_invoice: str) -> dict:
         frappe.db.rollback()
         sandbox_einvoice_adapter.reset()
         physical_artifacts_clean = _cleanup_artifacts(file_urls)
+        if file_urls:
+            cleanup_urls = tuple(file_urls)
+            frappe.db.after_commit.add(lambda: _cleanup_artifacts(list(cleanup_urls)))
     result["after_counts"] = _counts()
     result["rollback_clean"] = result["after_counts"] == before
     result["physical_artifacts_clean"] = physical_artifacts_clean
