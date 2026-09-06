@@ -2,6 +2,8 @@
 
 Status: active implementation
 
+Source of truth: host workspace `/home/ubuntu/n8n2erpnext/.erpnext-vietnam-localization`. The LXD bench checkout is deployment/runtime only and must never become the development source of truth.
+
 ## P0 — Foundation
 1. Universal Frappe app scaffold (`erpnext_vietnam`), no product-specific dependency.
 2. Pure rule-selection core: effective dates, statuses, deterministic precedence, immutable snapshot hashing.
@@ -29,7 +31,8 @@ Status: active implementation
 - [P3A implemented] `VN Tax Declaration` canonical preparation model for 01/GTGT, 05/KK-TNCN and 05/QTT-TNCN with source snapshots, deterministic hashes and release immutability.
 - [P3B implemented] `VN Social Insurance Export` canonical TK1-TS, TK3-TS and D02-LT builders pinned to current official BHXH source PDFs.
 - [P3B implemented] Read-only preview APIs are separate from explicit Prepared-record creation; no GL/Journal Entry/VN Submission/external transport side effects.
-- [P3C pending] Exact government form indicator/column/XML/XLS adapters, accountant-reviewed vectors and export UAT. Format adapters remain separate from calculation logic.
+- [P3C implemented/deployed] Versioned TT89 tax indicator contracts, QĐ 505/1040 BHXH field/column contracts, additive VAT reporting taxonomy, adapter snapshot/hash persistence, historical guards and fail-closed `Needs Review` behavior; 78/78 tests PASS and production migrate verified.
+- [P3C remaining gate] Exact government XML/XLS/export serialization and accountant-reviewed full filing vectors. No external submission is part of P3; transport remains P4/gateway work.
 
 ## P4 — E-invoice + external compliance adapters
 - Provider-neutral VN E-Invoice lifecycle and canonical payload.
