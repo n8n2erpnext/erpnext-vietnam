@@ -1,6 +1,6 @@
 # P3 — Statutory declarations and social-insurance exports
 
-Status: P3A/P3B canonical preparation, P3C statutory field contracts and P3D deterministic review exports are implemented. Accountant-reviewed full filing vectors and authority-specific direct-upload schemas remain pending.
+Status: P3 engineering gate CLOSED on 2026-09-06. Canonical preparation, statutory field contracts, deterministic review exports and rollback-only live Frappe UAT are implemented. Accountant/legal validation remains an external acceptance activity; authority-specific machine-upload schemas belong to P4 once official technical schemas are pinned.
 
 ## Boundary
 
@@ -52,3 +52,5 @@ P3 therefore remains fail-closed. A package can be useful for accountant review 
 When a prepared statutory document has `adapter_status = Ready`, its form view exposes **Export → Review XLSX** and **Export → Review XML**. The buttons are hidden for new, Voided or `Needs Review` records.
 
 A rollback-only Frappe UAT harness (`erpnext_vietnam.declarations.uat.run_review_export_uat`) creates one temporary Ready tax declaration and one temporary Ready BHXH export, reloads them through the same permission/hash gate used by download APIs, serializes XML/XLSX, verifies GL/Journal Entry/VN Submission counts are unchanged, then rolls the transaction back and asserts zero persistence drift.
+
+Live UAT on `erp.thaiduy.digital` passed: GL Entry stayed 251→251, Journal Entry 2→2, VN Submission 0→0; the temporary tax declaration and social-insurance export each existed only during the transaction and returned to 0 after rollback. The runtime suite passed 86/86 tests and the site remained HTTP 200.
