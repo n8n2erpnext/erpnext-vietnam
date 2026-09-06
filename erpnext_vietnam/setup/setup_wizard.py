@@ -103,17 +103,25 @@ def preview_localization_profile(args=None):
     }
 
 
-def apply_localization_profile(args):
+@frappe.whitelist()
+def apply_localization_profile(args=None):
     args = frappe._dict(args or {})
     company = _resolve_company(args)
     if not company:
         frappe.throw(_("A valid Company is required to configure ERPNext Vietnam."))
 
+    if not frappe.has_permission("Company", ptype="read", doc=company):
+        frappe.throw(_("Not permitted to configure Vietnam localization for this Company."), frappe.PermissionError)
+    existing = frappe.db.get_value("VN Localization Settings", {"company": company}, "name")
+    permission_type = "write" if existing else "create"
+    if not frappe.has_permission("VN Localization Settings", ptype=permission_type, doc=existing):
+        frappe.throw(_("Not permitted to update Vietnam Localization Settings."), frappe.PermissionError)
+
     snapshot = build_setup_snapshot(args, company)
     payload = json.dumps(snapshot, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     digest = hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
-    name = frappe.db.get_value("VN Localization Settings", {"company": company}, "name")
+    name = existing
     doc = frappe.get_doc("VN Localization Settings", name) if name else frappe.new_doc("VN Localization Settings")
     doc.company = company
     doc.business_profile = snapshot["business_profile"]
@@ -128,3 +136,4 @@ def apply_localization_profile(args):
     doc.setup_applied_on = now_datetime()
     doc.setup_version = "1"
     doc.save(ignore_permissions=True)
+    return {"settings": doc.name, "snapshot_hash": digest, "company": company}

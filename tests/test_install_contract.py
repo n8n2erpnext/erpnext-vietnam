@@ -22,6 +22,13 @@ class TestInstallContract(unittest.TestCase):
         self.assertIn('"snapshot_hash"', source)
         self.assertIn('"changes"', source)
 
+    def test_apply_api_is_whitelisted_and_permission_guarded(self):
+        source = (ROOT / "erpnext_vietnam" / "setup" / "setup_wizard.py").read_text()
+        marker = '@frappe.whitelist()\ndef apply_localization_profile'
+        self.assertIn(marker, source)
+        self.assertIn('frappe.has_permission("Company", ptype="read"', source)
+        self.assertIn('frappe.has_permission("VN Localization Settings", ptype=permission_type', source)
+
 
 if __name__ == "__main__":
     unittest.main()
