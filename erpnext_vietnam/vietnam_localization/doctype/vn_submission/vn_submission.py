@@ -8,6 +8,10 @@ IMMUTABLE_AFTER_TRANSPORT = {
     "company", "submission_type", "endpoint", "source_doctype", "source_name", "rule_set",
     "rule_snapshot_hash", "schema_version", "payload_json", "payload_hash", "idempotency_key",
 }
+ACCEPTANCE_ARCHIVE_FIELDS = {
+    "external_reference", "submitted_at", "acceptance_evidence_json", "acceptance_evidence_hash",
+    "acceptance_recorded_at", "acknowledgement_file",
+}
 TRANSITIONS = {
     "DRAFT": {"READY", "CANCELLED"},
     "READY": {"SUBMITTING", "CANCELLED"},
@@ -46,6 +50,10 @@ class VNSubmission(Document):
             changed = [field for field in IMMUTABLE_AFTER_TRANSPORT if self.has_value_changed(field)]
             if changed:
                 frappe.throw("Submission identity/payload cannot change after transport has started: " + ", ".join(sorted(changed)))
+        if old_status == "ACCEPTED" or self.get_db_value("acceptance_evidence_hash"):
+            changed = [field for field in ACCEPTANCE_ARCHIVE_FIELDS if self.has_value_changed(field)]
+            if changed:
+                frappe.throw("Accepted submission archive evidence is immutable: " + ", ".join(sorted(changed)))
 
     def on_trash(self):
         if self.status != "DRAFT":

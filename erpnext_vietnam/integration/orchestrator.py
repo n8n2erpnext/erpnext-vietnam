@@ -9,6 +9,7 @@ from frappe.utils import now_datetime
 from erpnext_vietnam.declarations.canonical import canonical_json, payload_hash
 from erpnext_vietnam.integration.builtin import register_builtin_adapters
 from erpnext_vietnam.integration.contracts import AmbiguousTransportError, SubmissionEnvelope, SubmissionResult
+from erpnext_vietnam.integration.evidence import build_acceptance_snapshot, evidence_snapshot_hash
 from erpnext_vietnam.integration.registry import get_adapter
 
 register_builtin_adapters()
@@ -150,6 +151,32 @@ def prepare_submission(*, company: str, endpoint: str, submission_type: str, sch
     return doc
 
 
+def _persist_acceptance_evidence(submission, result: SubmissionResult) -> None:
+    evidence = result.evidence
+    if not evidence:
+        return
+    from frappe.utils.file_manager import save_file
+
+    file_urls: dict[str, str] = {}
+    for artifact in evidence.artifacts:
+        file_doc = save_file(
+            artifact.filename, bytes(artifact.content), "VN Submission", submission.name,
+            is_private=1,
+        )
+        file_urls[artifact.role.upper()] = file_doc.file_url
+    snapshot = build_acceptance_snapshot(evidence, file_urls=file_urls)
+    snapshot_json = canonical_json(snapshot)
+    snapshot_hash = evidence_snapshot_hash(snapshot)
+    if submission.acceptance_evidence_hash and submission.acceptance_evidence_hash != snapshot_hash:
+        frappe.throw("Accepted-provider evidence cannot be replaced by a different snapshot")
+    submission.acceptance_evidence_json = snapshot_json
+    submission.acceptance_evidence_hash = snapshot_hash
+    submission.acceptance_recorded_at = submission.acceptance_recorded_at or now_datetime()
+    receipt = next((a for a in snapshot["artifacts"] if a["role"] in {"RECEIPT", "ACKNOWLEDGEMENT"}), None)
+    if receipt and receipt.get("file_url"):
+        submission.acknowledgement_file = receipt["file_url"]
+
+
 def _apply_result(submission, result: SubmissionResult, *, reconciled: bool = False):
     allowed = {"ACCEPTED", "REJECTED", "UNKNOWN", "SUBMITTING"}
     status = str(result.status or "UNKNOWN").upper()
@@ -158,8 +185,10 @@ def _apply_result(submission, result: SubmissionResult, *, reconciled: bool = Fa
     submission.status = status
     if result.external_id:
         submission.external_reference = result.external_id
-    if status == "ACCEPTED" and not submission.submitted_at:
-        submission.submitted_at = now_datetime()
+    if status == "ACCEPTED":
+        _persist_acceptance_evidence(submission, result)
+        if not submission.submitted_at:
+            submission.submitted_at = now_datetime()
     if reconciled:
         submission.last_reconciled_at = now_datetime()
     submission.save(ignore_permissions=True)

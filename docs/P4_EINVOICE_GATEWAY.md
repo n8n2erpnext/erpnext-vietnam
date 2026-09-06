@@ -1,6 +1,6 @@
 # P4 — E-Invoice and Compliance Gateway
 
-Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway gate passed; P4C explicit e-invoice bridge live rollback gate passed.
+Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway gate passed; P4C explicit e-invoice bridge live rollback gate passed; P4D acceptance-evidence archive implemented with live rollback gate pending.
 
 ## Legal/source boundary
 
@@ -61,3 +61,14 @@ Submission status is mirrored back onto `VN E-Invoice`; an ambiguous Submit sets
 The bridge UAT used the already-submitted Sales Invoice `ACC-SINV-2026-00029` only as a read-only source reference. It did not save, amend, cancel or resubmit that invoice. The temporary e-invoice/profile/endpoint/settings/submission records existed only inside the rollback transaction.
 
 The observed flow was `Queue → VN Submission READY → Submit/UNKNOWN → blind retry blocked → Reconcile/ACCEPTED`. The sandbox provider Submit counter was exactly 1. GL Entry remained 251 and Journal Entry remained 2 throughout. After rollback, `VN Localization Settings`, `VN Integration Endpoint`, `VN E-Invoice Profile`, `VN E-Invoice`, `VN Submission`, and `VN Submission Attempt` all returned to zero. HTTP remained 200.
+
+
+## P4D accepted-provider evidence archive
+
+Adapters may return a provider-neutral `AcceptanceEvidence` only after an Accepted result. The normalized contract carries provider/authority document identifiers, provider issue/acceptance timestamps, certificate serial metadata, JSON-safe provider response metadata and named binary artifacts. The core rejects duplicate artifact roles, path-bearing filenames, non-JSON response values and credential-like keys such as access tokens, private keys and client secrets.
+
+Artifact bytes are never trusted by filename or provider hash. The gateway recomputes SHA-256, stores artifacts as private Frappe Files attached to `VN Submission`, and records only immutable metadata plus private file URLs in the canonical acceptance-evidence snapshot. Receipt/acknowledgement artifacts populate the generic Submission acknowledgement pointer.
+
+For e-invoices, the accepted evidence is mirrored into the existing archive fields: provider request ID comes from the immutable transport attempt, provider document ID becomes Provider Invoice ID, authority code and certificate serial remain explicit metadata, and `FINAL_XML`/`RENDERING` artifact roles populate their archive pointers. `final_xml_sha256` is the hash of the actual stored bytes, not an adapter-supplied digest.
+
+The e-invoice archive snapshot chains the original canonical payload hash, issue idempotency key, VN Submission payload/idempotency hashes and acceptance-evidence hash under `VN-EINVOICE-ARCHIVE-2026-01`. Once accepted, both the Submission evidence snapshot and the e-invoice archive metadata are immutable. Missing evidence is not invented: a provider adapter may report Accepted without a complete artifact package, but it cannot fabricate legal completeness; production adapter certification must document what evidence its official API actually returns.

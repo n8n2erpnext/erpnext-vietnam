@@ -24,6 +24,9 @@
   "rendering_file",
   "signing_certificate_serial",
   "provider_response_json",
+  "archive_snapshot_json",
+  "archive_snapshot_hash",
+  "archive_locked_at",
   "related_einvoice",
   "relation_type",
   "cancellation_reason",
@@ -197,6 +200,26 @@
    "fieldname": "accepted_at",
    "fieldtype": "Datetime",
    "label": "Accepted At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "archive_snapshot_json",
+   "fieldtype": "Code",
+   "label": "Archive Snapshot JSON",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "archive_snapshot_hash",
+   "fieldtype": "Data",
+   "label": "Archive Snapshot Hash",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "archive_locked_at",
+   "fieldtype": "Datetime",
+   "label": "Archive Locked At",
    "read_only": 1
   }
  ],

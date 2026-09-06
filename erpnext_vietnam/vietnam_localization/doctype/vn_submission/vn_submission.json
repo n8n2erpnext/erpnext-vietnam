@@ -20,6 +20,9 @@
   "external_reference",
   "submitted_at",
   "last_reconciled_at",
+  "acceptance_evidence_json",
+  "acceptance_evidence_hash",
+  "acceptance_recorded_at",
   "acknowledgement_file",
   "notes"
  ],
@@ -133,6 +136,26 @@
    "fieldname": "notes",
    "fieldtype": "Small Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "acceptance_evidence_json",
+   "fieldtype": "Code",
+   "label": "Acceptance Evidence JSON",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "acceptance_evidence_hash",
+   "fieldtype": "Data",
+   "label": "Acceptance Evidence Hash",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "acceptance_recorded_at",
+   "fieldtype": "Datetime",
+   "label": "Acceptance Evidence Recorded At",
+   "read_only": 1
   }
  ],
  "links": [],

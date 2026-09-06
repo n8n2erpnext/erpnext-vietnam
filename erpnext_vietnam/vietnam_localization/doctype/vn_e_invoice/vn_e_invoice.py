@@ -10,6 +10,11 @@ IMMUTABLE_AFTER_TRANSPORT = {
     "company", "sales_invoice", "profile", "invoice_type", "revision", "schema_version",
     "canonical_payload_json", "canonical_payload_hash", "issue_idempotency_key",
 }
+ACCEPTANCE_ARCHIVE_FIELDS = {
+    "provider_request_id", "provider_invoice_id", "tax_authority_code", "final_xml_file",
+    "final_xml_sha256", "rendering_file", "signing_certificate_serial", "provider_response_json",
+    "issued_at", "accepted_at", "archive_snapshot_json", "archive_snapshot_hash", "archive_locked_at",
+}
 
 
 class VNEInvoice(Document):
@@ -47,6 +52,10 @@ class VNEInvoice(Document):
             changed = [f for f in IMMUTABLE_AFTER_TRANSPORT if self.has_value_changed(f)]
             if changed:
                 frappe.throw("E-invoice source/canonical payload is immutable after transport starts: " + ", ".join(sorted(changed)))
+        if old_status in {"ACCEPTED", "ADJUSTED", "REPLACED", "CANCELLED"} or self.get_db_value("archive_snapshot_hash"):
+            changed = [f for f in ACCEPTANCE_ARCHIVE_FIELDS if self.has_value_changed(f)]
+            if changed:
+                frappe.throw("Accepted e-invoice archive evidence is immutable: " + ", ".join(sorted(changed)))
 
     def on_trash(self):
         if self.status not in {"DRAFT", "PREPARED", "REJECTED"}:

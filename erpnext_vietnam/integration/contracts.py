@@ -19,6 +19,25 @@ class SubmissionEnvelope:
 
 
 @dataclass(frozen=True, slots=True)
+class AcceptanceArtifact:
+    role: str
+    filename: str
+    content: bytes
+    media_type: str | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class AcceptanceEvidence:
+    provider_document_id: str | None = None
+    authority_code: str | None = None
+    issued_at: str | None = None
+    accepted_at: str | None = None
+    signing_certificate_serial: str | None = None
+    artifacts: tuple[AcceptanceArtifact, ...] = ()
+    provider_response: dict[str, Any] | None = None
+
+
+@dataclass(frozen=True, slots=True)
 class SubmissionResult:
     status: str
     external_id: str | None = None
@@ -26,6 +45,7 @@ class SubmissionResult:
     request_id: str | None = None
     response_id: str | None = None
     http_status: int | None = None
+    evidence: AcceptanceEvidence | None = None
 
 
 class ComplianceAdapter(Protocol):

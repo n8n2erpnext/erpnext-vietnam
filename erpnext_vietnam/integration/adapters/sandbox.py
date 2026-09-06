@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from erpnext_vietnam.integration.contracts import AmbiguousTransportError, SubmissionEnvelope, SubmissionResult
+from erpnext_vietnam.integration.contracts import (
+    AcceptanceArtifact, AcceptanceEvidence, AmbiguousTransportError, SubmissionEnvelope, SubmissionResult,
+)
 
 
 class SandboxEInvoiceAdapter:
@@ -43,6 +45,27 @@ class SandboxEInvoiceAdapter:
         return self._result(envelope.idempotency_key, status)
 
     def _result(self, key: str, status: str, reused: bool = False) -> SubmissionResult:
+        evidence = None
+        if status == "ACCEPTED":
+            final_xml = (
+                '<?xml version="1.0" encoding="UTF-8"?>'
+                f'<SandboxEInvoice idempotency="{key}" status="ACCEPTED"/>'
+            ).encode("utf-8")
+            receipt = (
+                '{"sandbox":true,"status":"ACCEPTED","idempotency_key":"' + key + '"}'
+            ).encode("utf-8")
+            evidence = AcceptanceEvidence(
+                provider_document_id="SBX-INV-" + key[-12:],
+                authority_code="SBX-AUTH-" + key[-10:],
+                issued_at="2026-09-06 16:00:00",
+                accepted_at="2026-09-06 16:00:01",
+                signing_certificate_serial="SBX-CERT-0001",
+                artifacts=(
+                    AcceptanceArtifact("FINAL_XML", "sandbox-final.xml", final_xml, "application/xml"),
+                    AcceptanceArtifact("RECEIPT", "sandbox-receipt.json", receipt, "application/json"),
+                ),
+                provider_response={"sandbox": True, "status": status, "idempotency_reused": reused},
+            )
         return SubmissionResult(
             status=status,
             external_id="SBX-" + key,
@@ -50,6 +73,7 @@ class SandboxEInvoiceAdapter:
             request_id="REQ-" + key[-12:],
             response_id="RES-" + key[-12:],
             http_status=200 if status == "ACCEPTED" else (422 if status == "REJECTED" else 202),
+            evidence=evidence,
         )
 
 
