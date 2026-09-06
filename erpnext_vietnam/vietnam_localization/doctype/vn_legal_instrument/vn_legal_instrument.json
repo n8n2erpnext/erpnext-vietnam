@@ -1,0 +1,103 @@
+{
+ "actions": [],
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "instrument_number",
+  "title",
+  "issuer",
+  "official_url",
+  "publication_date",
+  "effective_from",
+  "effective_to",
+  "legal_status",
+  "source_sha256",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "instrument_number",
+   "fieldtype": "Data",
+   "label": "Instrument Number",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "issuer",
+   "fieldtype": "Data",
+   "label": "Issuer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "official_url",
+   "fieldtype": "Data",
+   "label": "Official URL"
+  },
+  {
+   "fieldname": "publication_date",
+   "fieldtype": "Date",
+   "label": "Publication Date"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "legal_status",
+   "fieldtype": "Select",
+   "label": "Legal Status",
+   "options": "Draft\nEffective\nExpired\nRepealed",
+   "default": "Draft",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "source_sha256",
+   "fieldtype": "Data",
+   "label": "Source SHA-256"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "module": "Vietnam Localization",
+ "name": "VN Legal Instrument",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:instrument_number",
+ "title_field": "title"
+}
