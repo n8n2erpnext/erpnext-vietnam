@@ -15,3 +15,14 @@ prepare -> validate -> submit -> get_status -> reconcile
 A timeout after `submit` is `UNKNOWN`, not `FAILED`. `UNKNOWN` must call `reconcile`/`get_status` before another submission attempt.
 
 Adapters are capability-based. The core must not assume every tax, BHXH or e-invoice provider supports every operation.
+
+
+## Runtime safety invariants
+
+- Adapter IDs are selected from an explicit code registry; no arbitrary import path is executed from database configuration.
+- `enable_compliance_gateway` and the endpoint `enabled` flag are both required before transport.
+- Endpoint channel and requested operation must match registered adapter capabilities.
+- Sandbox adapters are forbidden on PRODUCTION endpoints.
+- Every operation creates a numbered `VN Submission Attempt`; completed attempts are immutable and non-deletable.
+- A Submit timeout/ambiguous transport result becomes `UNKNOWN`; a second Submit is forbidden until reconciliation establishes provider truth.
+- P4B ships no production network adapter. Real provider transport is added only with a pinned provider technical contract, sandbox credentials and provider-specific UAT.

@@ -1,6 +1,6 @@
 # P4 — E-Invoice and Compliance Gateway
 
-Status: P4A provider-neutral e-invoice preparation implemented; P4B transport orchestration pending.
+Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway orchestration implemented and awaiting live rollback UAT.
 
 ## Legal/source boundary
 
@@ -27,3 +27,14 @@ Each issue operation receives a revision-scoped deterministic idempotency key. F
 ## P4B next
 
 P4B will turn the existing `VN Integration Endpoint`, `VN Submission`, and `VN Submission Attempt` foundation into an explicit adapter registry/orchestrator. It must validate endpoint capabilities, create immutable attempts, treat network ambiguity as `UNKNOWN`, reconcile before retry, and prove zero duplicate submission in a sandbox-only rollback UAT before any real provider adapter is added.
+
+
+## P4B gateway orchestration
+
+Adapters are registered explicitly in code; the database stores only an adapter ID and cannot import an arbitrary Python path. Every enabled endpoint must match the registered adapter channel. Endpoint capabilities can further narrow operations supported by the adapter. The built-in `sandbox.einvoice.v1` adapter is for tests only and is rejected for every `PRODUCTION` endpoint.
+
+Transport is double-gated: Company-scoped `enable_compliance_gateway` must be true and the selected `VN Integration Endpoint` must be enabled. A submission starts as Draft, passes adapter validation into Ready, then records an audit attempt before Submit. Completed attempts are immutable audit records and cannot be deleted.
+
+An ambiguous timeout after Submit is persisted as `UNKNOWN`. The core refuses another Submit while Unknown and requires `RECONCILE`; reconciliation may resolve to Accepted or Rejected. The sandbox adapter deliberately simulates a provider that accepted a request before the timeout, allowing the UAT to prove that the provider Submit call remains exactly one while reconciliation recovers the accepted truth.
+
+The P4B live gate is rollback-only: it temporarily enables the gateway inside a transaction, creates a sandbox endpoint/submission, simulates the ambiguous timeout, verifies blind retry is blocked, reconciles to Accepted, checks GL and Journal Entry counts, then rolls back every setup/endpoint/submission/attempt record. No production adapter and no external network call are present in this checkpoint.

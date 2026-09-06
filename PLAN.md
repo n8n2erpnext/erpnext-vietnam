@@ -39,7 +39,8 @@ Source of truth: host workspace `/home/ubuntu/n8n2erpnext/.erpnext-vietnam-local
 - [P4A implemented] Provider-neutral `VN E-Invoice Profile` + `VN E-Invoice` companion lifecycle and canonical Sales Invoice payload under `VN-EINVOICE-CANONICAL-2026-01`.
 - [P4A implemented] Submitted Sales Invoice hook is preparation-only and feature-gated by `VN Localization Settings.enable_einvoice`; it performs zero external transport and has no effect for unconfigured Companies.
 - [P4A implemented] Canonical payload requires explicit seller/buyer identity, immutable P1 VAT snapshots and reconciliation to the mapped native VAT output account before becoming `PREPARED`.
-- [P4B next] Compliance Gateway orchestration, adapter registry/capabilities, attempts, timeout→UNKNOWN→reconcile semantics and sandbox adapter UAT.
+- [P4B implemented] Explicit adapter registry/capability checks, Company+endpoint gateway gates, immutable audit attempts, timeout→UNKNOWN→reconcile semantics and sandbox-only rollback UAT harness.
+- [P4B live gate next] Deploy code-only gateway checkpoint, run rollback UAT on the live Frappe site and prove one provider submit call, blocked blind retry, clean rollback and zero GL/Journal Entry side effects.
 - Tax/BHXH authority-specific direct-upload serializers only after an official machine schema/version is pinned; no schema is inferred from PDFs or UI screenshots.
 - No provider credentials or private keys in ordinary DocTypes.
 
