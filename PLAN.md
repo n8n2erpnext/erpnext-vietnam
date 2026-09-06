@@ -44,9 +44,14 @@ Source of truth: host workspace `/home/ubuntu/n8n2erpnext/.erpnext-vietnam-local
 - [P4C implemented] Bridge `VN E-Invoice` to `VN Submission` with explicit manual Queue/Submit/Reconcile actions and status-driven Desk buttons; Sales Invoice hooks remain preparation-only and never auto-transport.
 - [P4C gate CLOSED 2026-09-06] Live rollback UAT on an existing submitted Sales Invoice proved Queue→READY, synthetic timeout→UNKNOWN, blind retry blocked, Reconcile→ACCEPTED, exactly one provider submit call, zero GL/Journal Entry change and zero persistent e-invoice/gateway records after rollback.
 - [P4D gate CLOSED 2026-09-06] Accepted-provider evidence is normalized and immutable; private artifacts are SHA-256 verified; canonical/submission/evidence hashes are chained into the e-invoice archive. Live rollback UAT passed with one provider submit, immutable archive/evidence, zero GL/Journal drift, zero persistent VN records, and dedicated post-process artifact cleanup verified clean.
-- [P4E implemented; live gate pending] Production-adapter admission requires an in-code RELEASED certification with hash-pinned technical contract/API spec plus payload schema; production endpoints pin the certification version/hash and runtime rejects stale pins.
+- [P4E gate CLOSED 2026-09-06] Production-adapter admission requires an in-code RELEASED certification with hash-pinned technical contract/API spec plus payload schema; production endpoints pin the certification version/hash and runtime rejects stale pins. Live rollback UAT proved uncertified production endpoints are blocked, a correctly pinned certified endpoint is admitted without transport, GL/Journal Entry are unchanged, and the endpoint rolls back cleanly.
 - Tax/BHXH authority-specific direct-upload serializers only after an official machine schema/version is pinned; no schema is inferred from PDFs or UI screenshots.
 - No provider credentials or private keys in ordinary DocTypes.
+
+## P5 — Release hardening + operator UX
+- [P5A next] Add a read-only Vietnam Localization Health surface that reports Company setup, accounting/VAT mapping readiness, payroll/e-invoice feature readiness, gateway state and production-adapter certification health without changing data.
+- [P5B next] Add reproducible install/upgrade smoke checks for public `bench get-app` consumers and document supported Frappe/ERPNext/optional-HRMS compatibility.
+- [P5C next] Freeze a release candidate only after clean install + upgrade + configured-company regression UAT; real provider adapters remain separately certified artifacts.
 
 ## Release gates
 - Frappe/ERPNext/HRMS core unchanged.
