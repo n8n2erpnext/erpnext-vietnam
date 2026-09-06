@@ -20,3 +20,16 @@ The public GitHub `bench get-app` flow has been verified on a real bench. If Ben
 After installing a new Python app into a running production bench, restart the bench processes once so existing workers load the editable package. Normal later `bench migrate` / deploy operations follow the bench's standard lifecycle.
 
 For an existing ERPNext site, open `/app/vn-setup-wizard` after install. Preview is non-mutating; Apply creates the Company-specific localization settings. External compliance endpoints remain disabled until separately configured.
+
+
+## Supported compatibility
+
+The current development line targets Frappe `16.x` and ERPNext `16.x`. HRMS is optional; when installed for payroll/social-insurance features, the supported major is HRMS `16.x`. The release doctor fails closed on unsupported Frappe/ERPNext majors and reports the installed versions before release or upgrade.
+
+Before a production upgrade, run:
+
+```bash
+bench --site your-site execute erpnext_vietnam.diagnostics.release_doctor.run
+```
+
+A PASS confirms the engineering compatibility contract only; it is not legal/tax certification.
