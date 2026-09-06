@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "profile_name",
+  "company",
+  "enabled",
+  "endpoint",
+  "invoice_type",
+  "canonical_schema_version",
+  "legal_source",
+  "signing_mode",
+  "signing_reference",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "profile_name",
+   "fieldtype": "Data",
+   "label": "Profile Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "0",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "endpoint",
+   "fieldtype": "Link",
+   "label": "E-Invoice Endpoint",
+   "options": "VN Integration Endpoint"
+  },
+  {
+   "fieldname": "invoice_type",
+   "fieldtype": "Select",
+   "label": "Default Invoice Type",
+   "options": "VAT_INVOICE\nSALES_INVOICE\nPOS_EINVOICE",
+   "default": "VAT_INVOICE",
+   "reqd": 1
+  },
+  {
+   "fieldname": "canonical_schema_version",
+   "fieldtype": "Data",
+   "label": "Canonical Schema Version",
+   "default": "VN-EINVOICE-CANONICAL-2026-01",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "legal_source",
+   "fieldtype": "Data",
+   "label": "Legal Source",
+   "default": "254/2026/ND-CP + 91/2026/TT-BTC",
+   "read_only": 1
+  },
+  {
+   "fieldname": "signing_mode",
+   "fieldtype": "Select",
+   "label": "Signing Mode",
+   "options": "UNSPECIFIED\nPROVIDER\nREMOTE_SIGNING\nHSM\nTOKEN",
+   "default": "UNSPECIFIED",
+   "reqd": 1
+  },
+  {
+   "fieldname": "signing_reference",
+   "fieldtype": "Data",
+   "label": "Signing Reference"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN E-Invoice Profile",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "title_field": "profile_name"
+}

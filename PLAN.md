@@ -36,9 +36,11 @@ Source of truth: host workspace `/home/ubuntu/n8n2erpnext/.erpnext-vietnam-local
 - [P3 engineering gate CLOSED 2026-09-06] Canonical preparation, statutory field/column contracts, immutable adapter snapshots, fail-closed review exports and live rollback UAT are complete. Accountant/legal validation remains an external acceptance activity, not something code may self-certify.
 
 ## P4 — E-invoice + external compliance adapters
-- Provider-neutral VN E-Invoice lifecycle and canonical payload.
+- [P4A implemented] Provider-neutral `VN E-Invoice Profile` + `VN E-Invoice` companion lifecycle and canonical Sales Invoice payload under `VN-EINVOICE-CANONICAL-2026-01`.
+- [P4A implemented] Submitted Sales Invoice hook is preparation-only and feature-gated by `VN Localization Settings.enable_einvoice`; it performs zero external transport and has no effect for unconfigured Companies.
+- [P4A implemented] Canonical payload requires explicit seller/buyer identity, immutable P1 VAT snapshots and reconciliation to the mapped native VAT output account before becoming `PREPARED`.
+- [P4B next] Compliance Gateway orchestration, adapter registry/capabilities, attempts, timeout→UNKNOWN→reconcile semantics and sandbox adapter UAT.
 - Tax/BHXH authority-specific direct-upload serializers only after an official machine schema/version is pinned; no schema is inferred from PDFs or UI screenshots.
-- Adapter interface for provider/tax-authority integrations.
 - No provider credentials or private keys in ordinary DocTypes.
 
 ## Release gates

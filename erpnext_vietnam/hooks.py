@@ -24,7 +24,10 @@ after_migrate = "erpnext_vietnam.setup.install.after_migrate"
 # Additive P1/P2 hooks. ERPNext/HRMS remain the transaction, tax, payroll and GL engines.
 doc_events = {
     "Item": {"validate": "erpnext_vietnam.vat.service.validate_item"},
-    "Sales Invoice": {"validate": "erpnext_vietnam.vat.service.validate_sales_invoice"},
+    "Sales Invoice": {
+        "validate": "erpnext_vietnam.vat.service.validate_sales_invoice",
+        "on_submit": "erpnext_vietnam.einvoice.events.on_sales_invoice_submit",
+    },
     "Purchase Invoice": {"validate": "erpnext_vietnam.vat.service.validate_purchase_invoice"},
     "Salary Slip": {
         "validate": "erpnext_vietnam.payroll.service.validate_salary_slip",

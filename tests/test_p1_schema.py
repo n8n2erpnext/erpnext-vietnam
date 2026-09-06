@@ -23,7 +23,8 @@ class TestP1Schema(unittest.TestCase):
     def test_hooks_are_additive(self):
         hooks = (ROOT / "erpnext_vietnam/hooks.py").read_text()
         self.assertNotIn("override_doctype_class", hooks)
-        self.assertIn('"Sales Invoice": {"validate":', hooks)
+        self.assertIn('"Sales Invoice"', hooks)
+        self.assertIn('erpnext_vietnam.vat.service.validate_sales_invoice', hooks)
         self.assertIn('"Purchase Invoice": {"validate":', hooks)
 
     def test_no_product_specific_runtime(self):

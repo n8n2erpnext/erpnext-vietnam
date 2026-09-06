@@ -1,0 +1,222 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "sales_invoice",
+  "profile",
+  "invoice_type",
+  "revision",
+  "status",
+  "schema_version",
+  "legal_source",
+  "canonical_payload_json",
+  "canonical_payload_hash",
+  "issue_idempotency_key",
+  "provider_request_id",
+  "provider_invoice_id",
+  "tax_authority_code",
+  "final_xml_file",
+  "final_xml_sha256",
+  "rendering_file",
+  "signing_certificate_serial",
+  "provider_response_json",
+  "related_einvoice",
+  "relation_type",
+  "cancellation_reason",
+  "prepared_at",
+  "issued_at",
+  "accepted_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "profile",
+   "fieldtype": "Link",
+   "label": "E-Invoice Profile",
+   "options": "VN E-Invoice Profile"
+  },
+  {
+   "fieldname": "invoice_type",
+   "fieldtype": "Select",
+   "label": "Invoice Type",
+   "options": "VAT_INVOICE\nSALES_INVOICE\nPOS_EINVOICE",
+   "default": "VAT_INVOICE",
+   "reqd": 1
+  },
+  {
+   "fieldname": "revision",
+   "fieldtype": "Int",
+   "label": "Revision",
+   "default": "1",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "DRAFT\nPREPARED\nQUEUED\nSUBMITTING\nACCEPTED\nREJECTED\nUNKNOWN\nADJUSTED\nREPLACED\nCANCELLED",
+   "default": "DRAFT",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "schema_version",
+   "fieldtype": "Data",
+   "label": "Schema Version",
+   "reqd": 1
+  },
+  {
+   "fieldname": "legal_source",
+   "fieldtype": "Data",
+   "label": "Legal Source",
+   "default": "254/2026/ND-CP + 91/2026/TT-BTC",
+   "read_only": 1
+  },
+  {
+   "fieldname": "canonical_payload_json",
+   "fieldtype": "Code",
+   "label": "Canonical Payload JSON",
+   "options": "JSON",
+   "reqd": 1
+  },
+  {
+   "fieldname": "canonical_payload_hash",
+   "fieldtype": "Data",
+   "label": "Canonical Payload Hash",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "issue_idempotency_key",
+   "fieldtype": "Data",
+   "label": "Issue Idempotency Key",
+   "read_only": 1,
+   "unique": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "provider_request_id",
+   "fieldtype": "Data",
+   "label": "Provider Request ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provider_invoice_id",
+   "fieldtype": "Data",
+   "label": "Provider Invoice ID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tax_authority_code",
+   "fieldtype": "Data",
+   "label": "Tax Authority Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "final_xml_file",
+   "fieldtype": "Attach",
+   "label": "Final XML",
+   "read_only": 1
+  },
+  {
+   "fieldname": "final_xml_sha256",
+   "fieldtype": "Data",
+   "label": "Final XML SHA-256",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rendering_file",
+   "fieldtype": "Attach",
+   "label": "Rendering",
+   "read_only": 1
+  },
+  {
+   "fieldname": "signing_certificate_serial",
+   "fieldtype": "Data",
+   "label": "Signing Certificate Serial",
+   "read_only": 1
+  },
+  {
+   "fieldname": "provider_response_json",
+   "fieldtype": "Code",
+   "label": "Provider Response JSON",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "related_einvoice",
+   "fieldtype": "Link",
+   "label": "Related E-Invoice",
+   "options": "VN E-Invoice"
+  },
+  {
+   "fieldname": "relation_type",
+   "fieldtype": "Select",
+   "label": "Relation Type",
+   "options": "\nADJUSTS\nREPLACES"
+  },
+  {
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Small Text",
+   "label": "Cancellation Reason"
+  },
+  {
+   "fieldname": "prepared_at",
+   "fieldtype": "Datetime",
+   "label": "Prepared At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "issued_at",
+   "fieldtype": "Datetime",
+   "label": "Issued At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accepted_at",
+   "fieldtype": "Datetime",
+   "label": "Accepted At",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN E-Invoice",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
