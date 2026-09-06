@@ -1,6 +1,6 @@
 # P4 — E-Invoice and Compliance Gateway
 
-Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway gate passed; P4C explicit e-invoice bridge live rollback gate passed; P4D acceptance-evidence archive implemented with live rollback gate pending.
+Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway gate passed; P4C explicit e-invoice bridge live rollback gate passed; P4D acceptance-evidence archive live gate passed.
 
 ## Legal/source boundary
 
@@ -72,3 +72,10 @@ Artifact bytes are never trusted by filename or provider hash. The gateway recom
 For e-invoices, the accepted evidence is mirrored into the existing archive fields: provider request ID comes from the immutable transport attempt, provider document ID becomes Provider Invoice ID, authority code and certificate serial remain explicit metadata, and `FINAL_XML`/`RENDERING` artifact roles populate their archive pointers. `final_xml_sha256` is the hash of the actual stored bytes, not an adapter-supplied digest.
 
 The e-invoice archive snapshot chains the original canonical payload hash, issue idempotency key, VN Submission payload/idempotency hashes and acceptance-evidence hash under `VN-EINVOICE-ARCHIVE-2026-01`. Once accepted, both the Submission evidence snapshot and the e-invoice archive metadata are immutable. Missing evidence is not invented: a provider adapter may report Accepted without a complete artifact package, but it cannot fabricate legal completeness; production adapter certification must document what evidence its official API actually returns.
+
+
+## P4D live rollback result — 2026-09-06
+
+The live gate used submitted Sales Invoice `ACC-SINV-2026-00029` as a read-only source and the in-process `sandbox.einvoice.v1` adapter only. The flow again produced one provider Submit, synthetic timeout → Unknown, then Reconcile → Accepted. The accepted result carried normalized provider request/document identifiers, authority code, certificate serial, final XML and receipt evidence. The stored final XML SHA-256 was recomputed from the actual private File bytes and matched the immutable e-invoice archive snapshot chain.
+
+Attempts to alter the accepted e-invoice archive hash fields or the accepted Submission evidence hash were rejected. GL Entry remained 251 and Journal Entry remained 2. The transaction rolled back all temporary VN Localization Settings, endpoint, profile, e-invoice, submission and attempt rows to zero. Because Frappe File rollback behavior can leave filesystem blobs until request finalization, the UAT uses uniquely prefixed `p4d-uat-*` artifacts plus a dedicated fresh-request cleanup function; the external post-process check verified zero remaining UAT artifacts. HTTP remained 200 and pre-existing HRMS local customizations were unchanged.
