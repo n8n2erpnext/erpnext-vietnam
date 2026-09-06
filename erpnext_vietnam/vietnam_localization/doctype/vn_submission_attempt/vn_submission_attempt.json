@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "submission",
+  "attempt_no",
+  "operation",
+  "outcome",
+  "started_at",
+  "completed_at",
+  "request_id",
+  "response_id",
+  "http_status",
+  "request_hash",
+  "response_hash",
+  "response_excerpt",
+  "error_code",
+  "error_message"
+ ],
+ "fields": [
+  {
+   "fieldname": "submission",
+   "fieldtype": "Link",
+   "label": "Submission",
+   "options": "VN Submission",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "attempt_no",
+   "fieldtype": "Int",
+   "label": "Attempt No",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "operation",
+   "fieldtype": "Select",
+   "label": "Operation",
+   "options": "PREPARE\nVALIDATE\nSUBMIT\nGET_STATUS\nDOWNLOAD_RECEIPT\nRECONCILE\nADJUST\nREPLACE\nCANCEL",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "outcome",
+   "fieldtype": "Select",
+   "label": "Outcome",
+   "options": "PENDING\nSUCCESS\nFAILED\nUNKNOWN",
+   "default": "PENDING",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At",
+   "reqd": 1
+  },
+  {
+   "fieldname": "completed_at",
+   "fieldtype": "Datetime",
+   "label": "Completed At"
+  },
+  {
+   "fieldname": "request_id",
+   "fieldtype": "Data",
+   "label": "Provider Request ID"
+  },
+  {
+   "fieldname": "response_id",
+   "fieldtype": "Data",
+   "label": "Provider Response ID"
+  },
+  {
+   "fieldname": "http_status",
+   "fieldtype": "Int",
+   "label": "HTTP Status"
+  },
+  {
+   "fieldname": "request_hash",
+   "fieldtype": "Data",
+   "label": "Request Hash"
+  },
+  {
+   "fieldname": "response_hash",
+   "fieldtype": "Data",
+   "label": "Response Hash"
+  },
+  {
+   "fieldname": "response_excerpt",
+   "fieldtype": "Small Text",
+   "label": "Response Excerpt"
+  },
+  {
+   "fieldname": "error_code",
+   "fieldtype": "Data",
+   "label": "Error Code"
+  },
+  {
+   "fieldname": "error_message",
+   "fieldtype": "Small Text",
+   "label": "Error Message"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-06 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Vietnam Localization",
+ "name": "VN Submission Attempt",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "hash"
+}

@@ -5,7 +5,9 @@ app_description = "Universal Vietnam localization and compliance layer"
 app_email = ""
 app_license = ""
 
-required_apps = ["erpnext", "hrms"]
+required_apps = ["erpnext"]
+
+# HRMS is optional. Payroll/PIT/BHXH features activate only when HRMS is installed.
 
 # P0 intentionally contains no product-specific hooks.
 # DocType event hooks are added only when their statutory contracts are implemented and tested.

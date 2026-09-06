@@ -28,3 +28,11 @@ Endpoint credentials, signing secrets and certificates are references to a secre
 8. `VN Submission Attempt`
 
 VAT/payroll/e-invoice domain DocTypes begin only after these foundation contracts pass site-level tests.
+
+## Dependency policy
+
+`erpnext` is the only hard application dependency. HRMS integration is optional so accounting-only ERPNext sites can install the Vietnam localization app. Payroll/PIT/BHXH features must feature-detect HRMS at runtime and remain disabled when HRMS is absent.
+
+## P0 completion criteria
+
+P0 is complete only when all eight foundation DocTypes migrate on a real Frappe v16 site, the setup wizard registers as an app-specific wizard, domain profile sync is idempotent, no external endpoint is enabled by default, and a clean `bench get-app` from the public GitHub repository succeeds.
