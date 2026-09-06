@@ -1,0 +1,135 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:company",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "business_profile",
+  "accounting_regime",
+  "vat_method",
+  "features_section",
+  "enable_payroll_compliance",
+  "enable_social_insurance",
+  "enable_einvoice",
+  "enable_compliance_gateway",
+  "audit_section",
+  "setup_version",
+  "setup_applied_on",
+  "setup_snapshot_hash",
+  "setup_snapshot_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "business_profile",
+   "fieldtype": "Link",
+   "label": "Business Profile",
+   "options": "VN Business Profile",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "accounting_regime",
+   "fieldtype": "Select",
+   "label": "Accounting Regime",
+   "options": "TT99_2025\nTT133_2016\nCUSTOM_REVIEW_REQUIRED",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vat_method",
+   "fieldtype": "Select",
+   "label": "VAT Method",
+   "options": "DEDUCTION\nDIRECT\nNOT_CONFIGURED",
+   "reqd": 1
+  },
+  {
+   "fieldname": "features_section",
+   "fieldtype": "Section Break",
+   "label": "Compliance Features"
+  },
+  {
+   "fieldname": "enable_payroll_compliance",
+   "fieldtype": "Check",
+   "label": "Enable PIT Payroll Compliance",
+   "default": "0"
+  },
+  {
+   "fieldname": "enable_social_insurance",
+   "fieldtype": "Check",
+   "label": "Enable Social Insurance Compliance",
+   "default": "0"
+  },
+  {
+   "fieldname": "enable_einvoice",
+   "fieldtype": "Check",
+   "label": "Enable E-Invoice Preparation",
+   "default": "0"
+  },
+  {
+   "fieldname": "enable_compliance_gateway",
+   "fieldtype": "Check",
+   "label": "Enable Compliance Gateway",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "audit_section",
+   "fieldtype": "Section Break",
+   "label": "Setup Audit"
+  },
+  {
+   "fieldname": "setup_version",
+   "fieldtype": "Data",
+   "label": "Setup Version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "setup_applied_on",
+   "fieldtype": "Datetime",
+   "label": "Setup Applied On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "setup_snapshot_hash",
+   "fieldtype": "Data",
+   "label": "Setup Snapshot Hash",
+   "read_only": 1
+  },
+  {
+   "fieldname": "setup_snapshot_json",
+   "fieldtype": "Code",
+   "label": "Setup Snapshot JSON",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN Localization Settings",
+ "naming_rule": "By fieldname",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

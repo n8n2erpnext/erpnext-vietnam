@@ -8,7 +8,8 @@ Status: active implementation
 3. Legal registry model specification and fixtures format.
 4. Generic Compliance Gateway contracts: endpoint, submission, attempts, idempotency and reconciliation.
 5. Company/account statutory-role mapping contract.
-6. Tests for historical reproducibility, rule overlap rejection and idempotency.
+6. App-specific Setup Wizard with versioned business-domain profiles, accounting/VAT choices, dry-run/preview contract and immutable setup snapshot.
+7. Tests for historical reproducibility, rule overlap rejection, domain-profile stability and idempotency.
 
 ## P1 — Accounting + VAT
 - TT99/2025 chart-of-accounts dataset imported as versioned legal data after direct Appendix II verification.

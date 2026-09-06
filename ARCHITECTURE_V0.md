@@ -59,6 +59,15 @@ Use companion DocTypes for legal/audit-heavy objects. Use Custom Fields only whe
 `Salary Slip`: calculate against a released rule set, persist evidence lines, never silently recalculate old submitted slips after a law update.
 
 `Payroll Entry`: create or reconcile employer-side statutory contribution accrual through ordinary ERPNext accounting primitives.
+
+## Setup Wizard and business profiles
+
+`erpnext_vietnam` owns an app-specific Frappe Setup Wizard. The selected business domain is a preset, never a legal rule. Profiles are versioned and may recommend modules/default mappings, but VAT/PIT/BHXH applicability remains controlled by effective-dated legal rules and company-specific configuration.
+
+Initial profiles include general services, software/SaaS, retail, wholesale/distribution, manufacturing, real estate, hospitality, healthcare, education, agriculture, logistics, construction, professional services, nonprofit and custom. The wizard records an immutable JSON snapshot + SHA-256 hash per Company. External government-facing submission is always disabled by default and requires explicit administrator configuration/validation.
+
+The setup contract is: select profile -> preview proposed configuration -> apply -> persist audit snapshot. Re-running setup must not rewrite submitted historical transactions or released legal rules.
+
 ## Rule engine principles
 
 1. No scattered legal constants in event handlers.
