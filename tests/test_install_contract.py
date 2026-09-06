@@ -29,6 +29,12 @@ class TestInstallContract(unittest.TestCase):
         self.assertIn('frappe.has_permission("Company", ptype="read"', source)
         self.assertIn('frappe.has_permission("VN Localization Settings", ptype=permission_type', source)
 
+    def test_rpc_string_args_are_json_decoded_before_frappe_dict(self):
+        source = (ROOT / "erpnext_vietnam" / "setup" / "setup_wizard.py").read_text()
+        self.assertIn("def _coerce_args", source)
+        self.assertIn("json.loads(args)", source)
+        self.assertIn("args = _coerce_args(args)", source)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -10,13 +10,26 @@ from frappe.utils import now_datetime
 from erpnext_vietnam.setup.domain_profiles import get_domain_profile, get_domain_profile_options as _profile_options
 
 
+def _coerce_args(args=None):
+    if args in (None, ""):
+        return frappe._dict()
+    if isinstance(args, str):
+        try:
+            args = json.loads(args)
+        except json.JSONDecodeError:
+            frappe.throw(_("Setup arguments must be valid JSON."))
+    if not isinstance(args, dict):
+        frappe.throw(_("Setup arguments must be a JSON object."))
+    return frappe._dict(args)
+
+
 @frappe.whitelist()
 def get_domain_profile_options():
     return _profile_options()
 
 
 def get_setup_stages(args=None):
-    args = frappe._dict(args or {})
+    args = _coerce_args(args)
     return [
         {
             "status": _("Preparing Vietnam localization"),
@@ -78,7 +91,7 @@ def build_setup_snapshot(args, company: str) -> dict[str, object]:
 
 @frappe.whitelist()
 def preview_localization_profile(args=None):
-    args = frappe._dict(args or {})
+    args = _coerce_args(args)
     company = _resolve_company(args)
     if not company:
         frappe.throw(_("A valid Company is required to preview ERPNext Vietnam setup."))
@@ -105,7 +118,7 @@ def preview_localization_profile(args=None):
 
 @frappe.whitelist()
 def apply_localization_profile(args=None):
-    args = frappe._dict(args or {})
+    args = _coerce_args(args)
     company = _resolve_company(args)
     if not company:
         frappe.throw(_("A valid Company is required to configure ERPNext Vietnam."))
