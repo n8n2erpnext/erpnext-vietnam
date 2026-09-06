@@ -5,10 +5,12 @@ def _sync_reference_data():
     from erpnext_vietnam.setup.setup_wizard import sync_business_profiles
     from erpnext_vietnam.setup.custom_fields import sync_custom_fields
     from erpnext_vietnam.setup.p1_seed import seed_p1_reference_data
+    from erpnext_vietnam.accounting.catalog import seed_tt99_statutory_accounts
 
     sync_business_profiles()
     sync_custom_fields()
     seed_p1_reference_data()
+    seed_tt99_statutory_accounts()
 
 
 def after_install():

@@ -1,0 +1,1675 @@
+{
+  "catalog_version": "TT99_2025_APPENDIX_II_V1",
+  "accounting_regime": "TT99_2025",
+  "effective_from": "2026-01-01",
+  "legal_instrument": "99/2025/TT-BTC",
+  "source_title": "Phụ lục II - Hệ thống tài khoản kế toán doanh nghiệp",
+  "source_url": "https://congbaocdn.chinhphu.vn/CongBaoCP/VanBan/2025/10/46529/59634-1-20251565-156699-2025-tt-btc.pdf",
+  "source_sha256": "2f8edab015d1291675d58e9b4452641350a66a5b5d23f47c85ca6dfd9953c99d",
+  "source_pdf_page_range": [
+    32,
+    42
+  ],
+  "source_printed_page_range": [
+    34,
+    44
+  ],
+  "records": [
+    {
+      "account_code": "111",
+      "account_name_vi": "Tiền mặt",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "112",
+      "account_name_vi": "Tiền gửi không kỳ hạn",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "113",
+      "account_name_vi": "Tiền đang chuyển",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "121",
+      "account_name_vi": "Chứng khoán kinh doanh",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "128",
+      "account_name_vi": "Đầu tư nắm giữ đến ngày đáo hạn",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "1281",
+      "account_name_vi": "Tiền gửi có kỳ hạn",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": "128",
+      "level": 2
+    },
+    {
+      "account_code": "1282",
+      "account_name_vi": "Trái phiếu",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": "128",
+      "level": 2
+    },
+    {
+      "account_code": "1283",
+      "account_name_vi": "Cho vay",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": "128",
+      "level": 2
+    },
+    {
+      "account_code": "1288",
+      "account_name_vi": "Các khoản đầu tư khác nắm giữ đến ngày đáo hạn",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": "128",
+      "level": 2
+    },
+    {
+      "account_code": "131",
+      "account_name_vi": "Phải thu của khách hàng",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "133",
+      "account_name_vi": "Thuế GTGT được khấu trừ",
+      "category": "ASSET",
+      "source_pdf_page_index": 32,
+      "source_printed_page": 34,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "1331",
+      "account_name_vi": "Thuế GTGT được khấu trừ của hàng hóa, dịch vụ",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "133",
+      "level": 2
+    },
+    {
+      "account_code": "1332",
+      "account_name_vi": "Thuế GTGT được khấu trừ của TSCĐ",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "133",
+      "level": 2
+    },
+    {
+      "account_code": "136",
+      "account_name_vi": "Phải thu nội bộ",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "1361",
+      "account_name_vi": "Vốn kinh doanh ở đơn vị trực thuộc",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "136",
+      "level": 2
+    },
+    {
+      "account_code": "1362",
+      "account_name_vi": "Phải thu nội bộ về chênh lệch tỷ giá",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "136",
+      "level": 2
+    },
+    {
+      "account_code": "1363",
+      "account_name_vi": "Phải thu nội bộ về chi phí đi vay đủ điều kiện được vốn hóa",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "136",
+      "level": 2
+    },
+    {
+      "account_code": "1368",
+      "account_name_vi": "Phải thu nội bộ khác",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "136",
+      "level": 2
+    },
+    {
+      "account_code": "138",
+      "account_name_vi": "Phải thu khác",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "1381",
+      "account_name_vi": "Tài sản thiếu chờ xử lý",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "138",
+      "level": 2
+    },
+    {
+      "account_code": "1383",
+      "account_name_vi": "Thuế TTĐB của hàng nhập khẩu",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "138",
+      "level": 2
+    },
+    {
+      "account_code": "1388",
+      "account_name_vi": "Phải thu khác",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": "138",
+      "level": 2
+    },
+    {
+      "account_code": "141",
+      "account_name_vi": "Tạm ứng",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "151",
+      "account_name_vi": "Hàng mua đang đi đường",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "152",
+      "account_name_vi": "Nguyên liệu, vật liệu",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "153",
+      "account_name_vi": "Công cụ, dụng cụ",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "154",
+      "account_name_vi": "Chi phí sản xuất, kinh doanh dở dang",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "155",
+      "account_name_vi": "Sản phẩm",
+      "category": "ASSET",
+      "source_pdf_page_index": 33,
+      "source_printed_page": 35,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "156",
+      "account_name_vi": "Hàng hóa",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "157",
+      "account_name_vi": "Hàng gửi đi bán",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "158",
+      "account_name_vi": "Nguyên liệu, vật tư tại kho bảo thuế",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "171",
+      "account_name_vi": "Giao dịch mua, bán lại trái phiếu chính phủ",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "211",
+      "account_name_vi": "Tài sản cố định hữu hình",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "212",
+      "account_name_vi": "Tài sản cố định thuê tài chính",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "213",
+      "account_name_vi": "Tài sản cố định vô hình",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "214",
+      "account_name_vi": "Hao mòn tài sản cố định",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "2141",
+      "account_name_vi": "Hao mòn TSCĐ hữu hình",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": "214",
+      "level": 2
+    },
+    {
+      "account_code": "2142",
+      "account_name_vi": "Hao mòn TSCĐ thuê tài chính",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": "214",
+      "level": 2
+    },
+    {
+      "account_code": "2143",
+      "account_name_vi": "Hao mòn TSCĐ vô hình",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": "214",
+      "level": 2
+    },
+    {
+      "account_code": "2147",
+      "account_name_vi": "Hao mòn BĐSĐT",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": "214",
+      "level": 2
+    },
+    {
+      "account_code": "215",
+      "account_name_vi": "Tài sản sinh học",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "2151",
+      "account_name_vi": "Súc vật nuôi cho sản phẩm định kỳ",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": "215",
+      "level": 2
+    },
+    {
+      "account_code": "21511",
+      "account_name_vi": "Súc vật nuôi cho sản phẩm định kỳ chưa đạt đến giai đoạn trưởng thành",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": "2151",
+      "level": 3
+    },
+    {
+      "account_code": "21512",
+      "account_name_vi": "Súc vật nuôi cho sản phẩm định kỳ đạt đến giai đoạn trưởng thành",
+      "category": "ASSET",
+      "source_pdf_page_index": 34,
+      "source_printed_page": 36,
+      "parent_code": "2151",
+      "level": 3
+    },
+    {
+      "account_code": "215121",
+      "account_name_vi": "Nguyên giá",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "21512",
+      "level": 4
+    },
+    {
+      "account_code": "215122",
+      "account_name_vi": "Giá trị khấu hao lũy kế",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "21512",
+      "level": 4
+    },
+    {
+      "account_code": "2152",
+      "account_name_vi": "Súc vật nuôi lấy sản phẩm một lần",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "215",
+      "level": 2
+    },
+    {
+      "account_code": "2153",
+      "account_name_vi": "Cây trồng theo mùa vụ hoặc lấy sản phẩm một lần",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "215",
+      "level": 2
+    },
+    {
+      "account_code": "217",
+      "account_name_vi": "Bất động sản đầu tư",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "221",
+      "account_name_vi": "Đầu tư vào công ty con",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "222",
+      "account_name_vi": "Đầu tư vào công ty liên doanh, liên kết",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "228",
+      "account_name_vi": "Đầu tư khác",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "2281",
+      "account_name_vi": "Đầu tư góp vốn vào đơn vị khác",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "228",
+      "level": 2
+    },
+    {
+      "account_code": "2288",
+      "account_name_vi": "Đầu tư khác",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "228",
+      "level": 2
+    },
+    {
+      "account_code": "229",
+      "account_name_vi": "Dự phòng tổn thất tài sản",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "2291",
+      "account_name_vi": "Dự phòng giảm giá chứng khoán kinh doanh",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "229",
+      "level": 2
+    },
+    {
+      "account_code": "2292",
+      "account_name_vi": "Dự phòng tổn thất đầu tư vào đơn vị khác",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "229",
+      "level": 2
+    },
+    {
+      "account_code": "2293",
+      "account_name_vi": "Dự phòng phải thu khó đòi",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "229",
+      "level": 2
+    },
+    {
+      "account_code": "2294",
+      "account_name_vi": "Dự phòng giảm giá hàng tồn kho",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "229",
+      "level": 2
+    },
+    {
+      "account_code": "2295",
+      "account_name_vi": "Dự phòng tổn thất tài sản sinh học",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "229",
+      "level": 2
+    },
+    {
+      "account_code": "241",
+      "account_name_vi": "Xây dựng cơ bản dở dang",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "2411",
+      "account_name_vi": "Mua sắm TSCĐ",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "241",
+      "level": 2
+    },
+    {
+      "account_code": "2412",
+      "account_name_vi": "Xây dựng cơ bản",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "241",
+      "level": 2
+    },
+    {
+      "account_code": "2413",
+      "account_name_vi": "Sửa chữa, bảo dưỡng định kỳ TSCĐ",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "241",
+      "level": 2
+    },
+    {
+      "account_code": "2414",
+      "account_name_vi": "Nâng cấp, cải tạo TSCĐ",
+      "category": "ASSET",
+      "source_pdf_page_index": 35,
+      "source_printed_page": 37,
+      "parent_code": "241",
+      "level": 2
+    },
+    {
+      "account_code": "242",
+      "account_name_vi": "Chi phí chờ phân bổ",
+      "category": "ASSET",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "243",
+      "account_name_vi": "Tài sản thuế thu nhập hoãn lại",
+      "category": "ASSET",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "244",
+      "account_name_vi": "Ký quỹ, ký cược",
+      "category": "ASSET",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "331",
+      "account_name_vi": "Phải trả cho người bán",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "332",
+      "account_name_vi": "Phải trả cổ tức, lợi nhuận",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "333",
+      "account_name_vi": "Thuế và các khoản phải nộp Nhà nước",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "3331",
+      "account_name_vi": "Thuế giá trị gia tăng phải nộp",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "33311",
+      "account_name_vi": "Thuế GTGT đầu ra",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "3331",
+      "level": 3
+    },
+    {
+      "account_code": "33312",
+      "account_name_vi": "Thuế GTGT hàng nhập khẩu",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "3331",
+      "level": 3
+    },
+    {
+      "account_code": "3332",
+      "account_name_vi": "Thuế tiêu thụ đặc biệt",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "3333",
+      "account_name_vi": "Thuế xuất, nhập khẩu",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "3334",
+      "account_name_vi": "Thuế thu nhập doanh nghiệp",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "3335",
+      "account_name_vi": "Thuế thu nhập cá nhân",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "3336",
+      "account_name_vi": "Thuế tài nguyên",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "3337",
+      "account_name_vi": "Thuế nhà đất, tiền thuê đất",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "3338",
+      "account_name_vi": "Thuế bảo vệ môi trường và các loại thuế khác",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "33381",
+      "account_name_vi": "Thuế bảo vệ môi trường",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "3338",
+      "level": 3
+    },
+    {
+      "account_code": "33382",
+      "account_name_vi": "Các loại thuế khác",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "3338",
+      "level": 3
+    },
+    {
+      "account_code": "3339",
+      "account_name_vi": "Phí, lệ phí và các khoản phải nộp khác",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 36,
+      "source_printed_page": 38,
+      "parent_code": "333",
+      "level": 2
+    },
+    {
+      "account_code": "334",
+      "account_name_vi": "Phải trả người lao động",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "335",
+      "account_name_vi": "Chi phí phải trả",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "336",
+      "account_name_vi": "Phải trả nội bộ",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "3361",
+      "account_name_vi": "Phải trả nội bộ về vốn kinh doanh",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "336",
+      "level": 2
+    },
+    {
+      "account_code": "3362",
+      "account_name_vi": "Phải trả nội bộ về chênh lệch tỷ giá",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "336",
+      "level": 2
+    },
+    {
+      "account_code": "3363",
+      "account_name_vi": "Phải trả nội bộ về chi phí đi vay đủ điều kiện được vốn hóa",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "336",
+      "level": 2
+    },
+    {
+      "account_code": "3368",
+      "account_name_vi": "Phải trả nội bộ khác",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "336",
+      "level": 2
+    },
+    {
+      "account_code": "337",
+      "account_name_vi": "Thanh toán theo tiến độ hợp đồng xây dựng",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "338",
+      "account_name_vi": "Phải trả, phải nộp khác",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "3381",
+      "account_name_vi": "Tài sản thừa chờ giải quyết",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "338",
+      "level": 2
+    },
+    {
+      "account_code": "3382",
+      "account_name_vi": "Kinh phí công đoàn",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "338",
+      "level": 2
+    },
+    {
+      "account_code": "3383",
+      "account_name_vi": "Bảo hiểm xã hội",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "338",
+      "level": 2
+    },
+    {
+      "account_code": "3384",
+      "account_name_vi": "Bảo hiểm y tế",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "338",
+      "level": 2
+    },
+    {
+      "account_code": "3386",
+      "account_name_vi": "Bảo hiểm thất nghiệp",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "338",
+      "level": 2
+    },
+    {
+      "account_code": "3387",
+      "account_name_vi": "Doanh thu chờ phân bổ",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "338",
+      "level": 2
+    },
+    {
+      "account_code": "3388",
+      "account_name_vi": "Phải trả, phải nộp khác",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "338",
+      "level": 2
+    },
+    {
+      "account_code": "341",
+      "account_name_vi": "Vay và nợ thuê tài chính",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "3411",
+      "account_name_vi": "Các khoản đi vay",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "341",
+      "level": 2
+    },
+    {
+      "account_code": "3412",
+      "account_name_vi": "Nợ thuê tài chính",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 37,
+      "source_printed_page": 39,
+      "parent_code": "341",
+      "level": 2
+    },
+    {
+      "account_code": "343",
+      "account_name_vi": "Trái phiếu phát hành",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "3431",
+      "account_name_vi": "Trái phiếu thường",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "343",
+      "level": 2
+    },
+    {
+      "account_code": "3432",
+      "account_name_vi": "Trái phiếu chuyển đổi",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "343",
+      "level": 2
+    },
+    {
+      "account_code": "344",
+      "account_name_vi": "Nhận ký quỹ, ký cược",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "347",
+      "account_name_vi": "Thuế thu nhập hoãn lại phải trả",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "352",
+      "account_name_vi": "Dự phòng phải trả",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "3521",
+      "account_name_vi": "Dự phòng bảo hành sản phẩm, hàng hóa",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "352",
+      "level": 2
+    },
+    {
+      "account_code": "3522",
+      "account_name_vi": "Dự phòng bảo hành công trình xây dựng",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "352",
+      "level": 2
+    },
+    {
+      "account_code": "3523",
+      "account_name_vi": "Dự phòng tái cơ cấu doanh nghiệp",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "352",
+      "level": 2
+    },
+    {
+      "account_code": "3525",
+      "account_name_vi": "Dự phòng phải trả khác",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "352",
+      "level": 2
+    },
+    {
+      "account_code": "353",
+      "account_name_vi": "Quỹ khen thưởng, phúc lợi",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "3531",
+      "account_name_vi": "Quỹ khen thưởng",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "353",
+      "level": 2
+    },
+    {
+      "account_code": "3532",
+      "account_name_vi": "Quỹ phúc lợi",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "353",
+      "level": 2
+    },
+    {
+      "account_code": "3533",
+      "account_name_vi": "Quỹ phúc lợi đã hình thành TSCĐ",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "353",
+      "level": 2
+    },
+    {
+      "account_code": "3534",
+      "account_name_vi": "Quỹ thưởng ban quản lý điều hành công ty",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "353",
+      "level": 2
+    },
+    {
+      "account_code": "356",
+      "account_name_vi": "Quỹ phát triển khoa học và công nghệ",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "3561",
+      "account_name_vi": "Quỹ phát triển khoa học và công nghệ",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "356",
+      "level": 2
+    },
+    {
+      "account_code": "3562",
+      "account_name_vi": "Quỹ phát triển khoa học và công nghệ đã hình thành tài sản",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": "356",
+      "level": 2
+    },
+    {
+      "account_code": "357",
+      "account_name_vi": "Quỹ bình ổn giá",
+      "category": "LIABILITY",
+      "source_pdf_page_index": 38,
+      "source_printed_page": 40,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "411",
+      "account_name_vi": "Vốn đầu tư của chủ sở hữu",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "4111",
+      "account_name_vi": "Vốn góp của chủ sở hữu",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": "411",
+      "level": 2
+    },
+    {
+      "account_code": "41111",
+      "account_name_vi": "Cổ phiếu phổ thông có quyền biểu quyết",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": "4111",
+      "level": 3
+    },
+    {
+      "account_code": "41112",
+      "account_name_vi": "Cổ phiếu ưu đãi",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": "4111",
+      "level": 3
+    },
+    {
+      "account_code": "4112",
+      "account_name_vi": "Thặng dư vốn",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": "411",
+      "level": 2
+    },
+    {
+      "account_code": "4113",
+      "account_name_vi": "Quyền chọn chuyển đổi trái phiếu",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": "411",
+      "level": 2
+    },
+    {
+      "account_code": "4118",
+      "account_name_vi": "Vốn khác",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": "411",
+      "level": 2
+    },
+    {
+      "account_code": "412",
+      "account_name_vi": "Chênh lệch đánh giá lại tài sản",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "413",
+      "account_name_vi": "Chênh lệch tỷ giá hối đoái",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "414",
+      "account_name_vi": "Quỹ đầu tư phát triển",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "418",
+      "account_name_vi": "Các quỹ khác thuộc vốn chủ sở hữu",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "419",
+      "account_name_vi": "Cổ phiếu mua lại của chính mình",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "421",
+      "account_name_vi": "Lợi nhuận sau thuế chưa phân phối",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "4211",
+      "account_name_vi": "Lợi nhuận sau thuế chưa phân phối lũy kế đến cuối năm trước",
+      "category": "EQUITY",
+      "source_pdf_page_index": 39,
+      "source_printed_page": 41,
+      "parent_code": "421",
+      "level": 2
+    },
+    {
+      "account_code": "4212",
+      "account_name_vi": "Lợi nhuận sau thuế chưa phân phối năm nay",
+      "category": "EQUITY",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": "421",
+      "level": 2
+    },
+    {
+      "account_code": "511",
+      "account_name_vi": "Doanh thu bán hàng và cung cấp dịch vụ",
+      "category": "REVENUE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "515",
+      "account_name_vi": "Doanh thu hoạt động tài chính",
+      "category": "REVENUE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "521",
+      "account_name_vi": "Các khoản giảm trừ doanh thu",
+      "category": "REVENUE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "621",
+      "account_name_vi": "Chi phí nguyên liệu, vật liệu trực tiếp",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "622",
+      "account_name_vi": "Chi phí nhân công trực tiếp",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "623",
+      "account_name_vi": "Chi phí sử dụng máy thi công",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "6231",
+      "account_name_vi": "Chi phí nhân công",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": "623",
+      "level": 2
+    },
+    {
+      "account_code": "6232",
+      "account_name_vi": "Chi phí vật liệu",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": "623",
+      "level": 2
+    },
+    {
+      "account_code": "6233",
+      "account_name_vi": "Chi phí dụng cụ sản xuất",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": "623",
+      "level": 2
+    },
+    {
+      "account_code": "6234",
+      "account_name_vi": "Chi phí khấu hao máy thi công",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": "623",
+      "level": 2
+    },
+    {
+      "account_code": "6237",
+      "account_name_vi": "Chi phí dịch vụ mua ngoài",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": "623",
+      "level": 2
+    },
+    {
+      "account_code": "6238",
+      "account_name_vi": "Chi phí bằng tiền khác",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": "623",
+      "level": 2
+    },
+    {
+      "account_code": "627",
+      "account_name_vi": "Chi phí sản xuất chung",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "6271",
+      "account_name_vi": "Chi phí nhân viên phân xưởng",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 40,
+      "source_printed_page": 42,
+      "parent_code": "627",
+      "level": 2
+    },
+    {
+      "account_code": "6272",
+      "account_name_vi": "Chi phí vật liệu",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "627",
+      "level": 2
+    },
+    {
+      "account_code": "6273",
+      "account_name_vi": "Chi phí dụng cụ sản xuất",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "627",
+      "level": 2
+    },
+    {
+      "account_code": "6274",
+      "account_name_vi": "Chi phí khấu hao TSCĐ",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "627",
+      "level": 2
+    },
+    {
+      "account_code": "6275",
+      "account_name_vi": "Thuế, phí, lệ phí",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "627",
+      "level": 2
+    },
+    {
+      "account_code": "6277",
+      "account_name_vi": "Chi phí dịch vụ mua ngoài",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "627",
+      "level": 2
+    },
+    {
+      "account_code": "6278",
+      "account_name_vi": "Chi phí bằng tiền khác",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "627",
+      "level": 2
+    },
+    {
+      "account_code": "632",
+      "account_name_vi": "Giá vốn hàng bán",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "635",
+      "account_name_vi": "Chi phí tài chính",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "641",
+      "account_name_vi": "Chi phí bán hàng",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "6411",
+      "account_name_vi": "Chi phí nhân viên",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "641",
+      "level": 2
+    },
+    {
+      "account_code": "6412",
+      "account_name_vi": "Chi phí vật liệu, bao bì",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "641",
+      "level": 2
+    },
+    {
+      "account_code": "6413",
+      "account_name_vi": "Chi phí dụng cụ, đồ dùng",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "641",
+      "level": 2
+    },
+    {
+      "account_code": "6414",
+      "account_name_vi": "Chi phí khấu hao TSCĐ",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "641",
+      "level": 2
+    },
+    {
+      "account_code": "6415",
+      "account_name_vi": "Thuế, phí, lệ phí",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "641",
+      "level": 2
+    },
+    {
+      "account_code": "6417",
+      "account_name_vi": "Chi phí dịch vụ mua ngoài",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "641",
+      "level": 2
+    },
+    {
+      "account_code": "6418",
+      "account_name_vi": "Chi phí bằng tiền khác",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "641",
+      "level": 2
+    },
+    {
+      "account_code": "642",
+      "account_name_vi": "Chi phí quản lý doanh nghiệp",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "6421",
+      "account_name_vi": "Chi phí nhân viên quản lý",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "642",
+      "level": 2
+    },
+    {
+      "account_code": "6422",
+      "account_name_vi": "Chi phí vật liệu quản lý",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "642",
+      "level": 2
+    },
+    {
+      "account_code": "6423",
+      "account_name_vi": "Chi phí đồ dùng văn phòng",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 41,
+      "source_printed_page": 43,
+      "parent_code": "642",
+      "level": 2
+    },
+    {
+      "account_code": "6424",
+      "account_name_vi": "Chi phí khấu hao TSCĐ",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "642",
+      "level": 2
+    },
+    {
+      "account_code": "6425",
+      "account_name_vi": "Thuế, phí và lệ phí",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "642",
+      "level": 2
+    },
+    {
+      "account_code": "6426",
+      "account_name_vi": "Chi phí dự phòng",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "642",
+      "level": 2
+    },
+    {
+      "account_code": "6427",
+      "account_name_vi": "Chi phí dịch vụ mua ngoài",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "642",
+      "level": 2
+    },
+    {
+      "account_code": "6428",
+      "account_name_vi": "Chi phí bằng tiền khác",
+      "category": "OPERATING_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "642",
+      "level": 2
+    },
+    {
+      "account_code": "711",
+      "account_name_vi": "Thu nhập khác",
+      "category": "OTHER_INCOME",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "811",
+      "account_name_vi": "Chi phí khác",
+      "category": "OTHER_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "821",
+      "account_name_vi": "Chi phí thuế thu nhập doanh nghiệp",
+      "category": "OTHER_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": null,
+      "level": 1
+    },
+    {
+      "account_code": "8211",
+      "account_name_vi": "Chi phí thuế TNDN hiện hành",
+      "category": "OTHER_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "821",
+      "level": 2
+    },
+    {
+      "account_code": "82111",
+      "account_name_vi": "Chi phí thuế thu nhập doanh nghiệp hiện hành theo quy định của Luật thuế thu nhập doanh nghiệp",
+      "category": "OTHER_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "8211",
+      "level": 3
+    },
+    {
+      "account_code": "82112",
+      "account_name_vi": "Chi phí thuế thu nhập doanh nghiệp bổ sung theo quy định về thuế tối thiểu toàn cầu",
+      "category": "OTHER_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "8211",
+      "level": 3
+    },
+    {
+      "account_code": "8212",
+      "account_name_vi": "Chi phí thuế TNDN hoãn lại",
+      "category": "OTHER_EXPENSE",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": "821",
+      "level": 2
+    },
+    {
+      "account_code": "911",
+      "account_name_vi": "Xác định kết quả kinh doanh",
+      "category": "RESULT",
+      "source_pdf_page_index": 42,
+      "source_printed_page": 44,
+      "parent_code": null,
+      "level": 1
+    }
+  ]
+}

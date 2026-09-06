@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:record_key",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "record_key",
+  "catalog_version",
+  "accounting_regime",
+  "account_code",
+  "parent_code",
+  "account_name_vi",
+  "account_level",
+  "account_category",
+  "effective_from",
+  "effective_to",
+  "legal_instrument",
+  "source_printed_page",
+  "source_sha256",
+  "reference_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "record_key",
+   "fieldtype": "Data",
+   "label": "Record Key",
+   "reqd": 1,
+   "unique": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "catalog_version",
+   "fieldtype": "Data",
+   "label": "Catalog Version",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "accounting_regime",
+   "fieldtype": "Data",
+   "label": "Accounting Regime",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "account_code",
+   "fieldtype": "Data",
+   "label": "Account Code",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "parent_code",
+   "fieldtype": "Data",
+   "label": "Parent Code",
+   "search_index": 1
+  },
+  {
+   "fieldname": "account_name_vi",
+   "fieldtype": "Data",
+   "label": "Vietnamese Account Name",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "account_level",
+   "fieldtype": "Int",
+   "label": "Level",
+   "reqd": 1
+  },
+  {
+   "fieldname": "account_category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "ASSET\nLIABILITY\nEQUITY\nREVENUE\nOPERATING_EXPENSE\nOTHER_INCOME\nOTHER_EXPENSE\nRESULT",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "legal_instrument",
+   "fieldtype": "Link",
+   "label": "Legal Instrument",
+   "options": "VN Legal Instrument",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_printed_page",
+   "fieldtype": "Int",
+   "label": "Source Printed Page",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_sha256",
+   "fieldtype": "Data",
+   "label": "Source SHA-256",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nReleased\nRetired",
+   "default": "Released",
+   "reqd": 1
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN Statutory Account",
+ "naming_rule": "By fieldname",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "sort_field": "account_code",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 1,
+ "title_field": "account_name_vi"
+}
