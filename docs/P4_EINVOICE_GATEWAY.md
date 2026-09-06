@@ -45,3 +45,12 @@ The P4B live gate is rollback-only: it temporarily enables the gateway inside a 
 On `erp.thaiduy.digital`, the sandbox UAT ran against a Company-scoped temporary configuration entirely inside a rollback transaction. GL Entry stayed 251, Journal Entry stayed 2, and the persistent counts for Localization Settings, Integration Endpoint, Submission and Submission Attempt all returned to their pre-UAT zero state.
 
 The operation sequence was exactly `VALIDATE/SUCCESS → SUBMIT/UNKNOWN → RECONCILE/SUCCESS`; blind re-submit while Unknown was rejected and the sandbox provider submit counter remained exactly 1. Reconciliation recovered `ACCEPTED`. This closes the P4B engineering gate without enabling a real provider or making an external network call.
+
+
+## P4C explicit e-invoice bridge
+
+A Prepared `VN E-Invoice` can be manually queued into `VN Submission`. Queueing resolves exactly one enabled Company-scoped `VN E-Invoice Profile`, verifies the stored canonical payload/hash is still Ready, and calls only the gateway `VALIDATE` preparation path. It does not submit to a provider. Repeated Queue is idempotent and reuses the existing non-cancelled submission for the e-invoice.
+
+The Desk form exposes status-driven manual actions only: Prepared → **Queue for Submission**, Queued → **Submit**, and Unknown/Submitting → **Reconcile**. The Sales Invoice `on_submit` hook is unchanged and remains local preparation-only. There is no automatic Queue or Submit path from ERPNext accounting documents.
+
+Submission status is mirrored back onto `VN E-Invoice`; an ambiguous Submit sets both records to Unknown, and only Reconcile can resolve provider truth. Provider external references are recorded as request references without pretending they are final tax-authority invoice codes.
