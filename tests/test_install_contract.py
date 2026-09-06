@@ -16,6 +16,10 @@ class TestInstallContract(unittest.TestCase):
         self.assertIn("erpnext_vietnam.setup.setup_wizard.get_domain_profile_options", js)
         self.assertNotIn("get_vn_business_profile_options", js)
 
+    def test_setup_page_links_operational_health(self):
+        js = (ROOT / "erpnext_vietnam/vietnam_localization/page/vn_setup_wizard/vn_setup_wizard.js").read_text()
+        self.assertIn('frappe.set_route("vn-localization-health")', js)
+
     def test_preview_contract_exists(self):
         source = (ROOT / "erpnext_vietnam" / "setup" / "setup_wizard.py").read_text()
         self.assertIn("def preview_localization_profile", source)

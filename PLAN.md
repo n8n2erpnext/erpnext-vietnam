@@ -49,7 +49,7 @@ Source of truth: host workspace `/home/ubuntu/n8n2erpnext/.erpnext-vietnam-local
 - No provider credentials or private keys in ordinary DocTypes.
 
 ## P5 — Release hardening + operator UX
-- [P5A next] Add a read-only Vietnam Localization Health surface that reports Company setup, accounting/VAT mapping readiness, payroll/e-invoice feature readiness, gateway state and production-adapter certification health without changing data.
+- [P5A implemented/deployed] Read-only Vietnam Localization Health reports Company setup, accounting/VAT mapping readiness, payroll/e-invoice readiness, gateway state and production-endpoint certification pins without changing data. Live validation on `LightBI Inc` returned `READY_WITH_WARNINGS`, correctly identifying empty COA mappings and missing e-invoice profile while keeping Compliance Gateway disabled.
 - [P5B next] Add reproducible install/upgrade smoke checks for public `bench get-app` consumers and document supported Frappe/ERPNext/optional-HRMS compatibility.
 - [P5C next] Freeze a release candidate only after clean install + upgrade + configured-company regression UAT; real provider adapters remain separately certified artifacts.
 

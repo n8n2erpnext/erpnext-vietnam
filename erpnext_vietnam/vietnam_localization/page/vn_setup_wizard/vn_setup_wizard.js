@@ -51,6 +51,8 @@ frappe.pages["vn-setup-wizard"].on_page_load = function (wrapper) {
 		return true;
 	}
 
+	page.add_button(__("Open Health"), () => frappe.set_route("vn-localization-health"));
+
 	page.add_button(__("Preview"), () => {
 		const data = values();
 		if (!validate_required(data)) return;
