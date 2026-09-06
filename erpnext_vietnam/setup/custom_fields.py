@@ -6,6 +6,13 @@ def sync_custom_fields():
     from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
     fields = {
+        "Global Defaults": [
+            {"fieldname": "vn_localization_section", "label": "Vietnam Localization", "fieldtype": "Section Break", "insert_after": "use_posting_datetime_for_naming_documents", "collapsible": 1},
+            {"fieldname": "vn_localization_status_html", "label": "Vietnam Localization Status", "fieldtype": "HTML", "insert_after": "vn_localization_section"},
+            {"fieldname": "vn_localization_actions_column", "fieldtype": "Column Break", "insert_after": "vn_localization_status_html"},
+            {"fieldname": "vn_open_localization_setup", "label": "Vietnam Localization Setup", "fieldtype": "Button", "insert_after": "vn_localization_actions_column"},
+            {"fieldname": "vn_open_localization_health", "label": "Vietnam Localization Health", "fieldtype": "Button", "insert_after": "vn_open_localization_setup"},
+        ],
         "Item": [
             {"fieldname": "vn_vat_classification", "label": "VN VAT Classification", "fieldtype": "Link", "options": "VN VAT Classification", "insert_after": "taxes"},
         ],

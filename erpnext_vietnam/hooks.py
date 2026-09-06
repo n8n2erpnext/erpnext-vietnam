@@ -16,6 +16,12 @@ setup_wizard_requires = "assets/erpnext_vietnam/js/setup_wizard.js"
 setup_wizard_stages = "erpnext_vietnam.setup.setup_wizard.get_setup_stages"
 
 
+# Additive Desk integration: keep ERPNext Global Defaults as the discoverable entry point
+# while all Vietnam configuration remains owned by this app.
+doctype_js = {
+    "Global Defaults": "public/js/global_defaults.js",
+}
+
 # Safe install lifecycle: seed reference profiles only.
 after_install = "erpnext_vietnam.setup.install.after_install"
 
