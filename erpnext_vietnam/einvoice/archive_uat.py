@@ -156,11 +156,27 @@ def run_einvoice_archive_rollback_uat(sales_invoice: str) -> dict:
     finally:
         frappe.db.rollback()
         sandbox_einvoice_adapter.reset()
-        physical_artifacts_clean = _cleanup_artifacts(file_urls)
-        if file_urls:
-            cleanup_urls = tuple(file_urls)
-            frappe.db.after_commit.add(lambda: _cleanup_artifacts(list(cleanup_urls)))
+        _cleanup_artifacts(file_urls)
     result["after_counts"] = _counts()
     result["rollback_clean"] = result["after_counts"] == before
-    result["physical_artifacts_clean"] = physical_artifacts_clean
+    result["post_process_cleanup_required"] = bool(file_urls)
     return result
+
+
+def cleanup_p4d_uat_artifacts() -> dict:
+    from pathlib import Path
+    from frappe.utils.file_manager import delete_file
+
+    root = Path(frappe.get_site_path("private", "files")).resolve()
+    removed = []
+    for path in sorted(root.glob("p4d-uat-*")):
+        if not path.is_file():
+            continue
+        file_url = "/private/files/" + path.name
+        delete_file(file_url)
+        if path.exists():
+            path.unlink()
+        if not path.exists():
+            removed.append(path.name)
+    remaining = sorted(p.name for p in root.glob("p4d-uat-*") if p.is_file())
+    return {"removed": removed, "remaining": remaining, "clean": not remaining}

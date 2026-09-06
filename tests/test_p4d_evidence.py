@@ -39,6 +39,7 @@ class TestP4DAcceptanceEvidence(unittest.TestCase):
         roles = {a.role for a in result.evidence.artifacts}
         self.assertIn("FINAL_XML", roles)
         self.assertIn("RECEIPT", roles)
+        self.assertTrue(all(a.filename.startswith("p4d-uat-") for a in result.evidence.artifacts))
 
 
 if __name__ == "__main__":

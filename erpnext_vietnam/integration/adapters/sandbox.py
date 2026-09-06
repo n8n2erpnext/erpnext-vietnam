@@ -61,8 +61,8 @@ class SandboxEInvoiceAdapter:
                 accepted_at="2026-09-06 16:00:01",
                 signing_certificate_serial="SBX-CERT-0001",
                 artifacts=(
-                    AcceptanceArtifact("FINAL_XML", "sandbox-final.xml", final_xml, "application/xml"),
-                    AcceptanceArtifact("RECEIPT", "sandbox-receipt.json", receipt, "application/json"),
+                    AcceptanceArtifact("FINAL_XML", f"p4d-uat-{key[-12:]}-final.xml", final_xml, "application/xml"),
+                    AcceptanceArtifact("RECEIPT", f"p4d-uat-{key[-12:]}-receipt.json", receipt, "application/json"),
                 ),
                 provider_response={"sandbox": True, "status": status, "idempotency_reused": reused},
             )
