@@ -1,0 +1,175 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "export_type",
+  "subject_doctype",
+  "subject_name",
+  "from_date",
+  "to_date",
+  "status",
+  "schema_version",
+  "source_reference",
+  "source_url",
+  "source_sha256",
+  "canonical_payload_json",
+  "payload_hash",
+  "source_count",
+  "warning_json",
+  "prepared_at",
+  "reviewed_by",
+  "reviewed_at",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "export_type",
+   "fieldtype": "Select",
+   "label": "Export Type",
+   "options": "TK1_TS\nTK3_TS\nD02_LT",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "subject_doctype",
+   "fieldtype": "Link",
+   "label": "Subject DocType",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "subject_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Subject",
+   "options": "subject_doctype"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nPrepared\nReviewed\nReleased\nVoided",
+   "default": "Draft",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "schema_version",
+   "fieldtype": "Data",
+   "label": "Schema Version",
+   "reqd": 1
+  },
+  {
+   "fieldname": "source_reference",
+   "fieldtype": "Data",
+   "label": "Source Reference"
+  },
+  {
+   "fieldname": "source_url",
+   "fieldtype": "Data",
+   "label": "Official Source URL"
+  },
+  {
+   "fieldname": "source_sha256",
+   "fieldtype": "Data",
+   "label": "Source SHA-256",
+   "read_only": 1
+  },
+  {
+   "fieldname": "canonical_payload_json",
+   "fieldtype": "Long Text",
+   "label": "Canonical Payload JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payload_hash",
+   "fieldtype": "Data",
+   "label": "Payload Hash",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "source_count",
+   "fieldtype": "Int",
+   "label": "Source Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warning_json",
+   "fieldtype": "Long Text",
+   "label": "Warnings JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "prepared_at",
+   "fieldtype": "Datetime",
+   "label": "Prepared At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_at",
+   "fieldtype": "Datetime",
+   "label": "Reviewed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-06 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Vietnam Localization",
+ "name": "VN Social Insurance Export",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "hash"
+}

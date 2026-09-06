@@ -26,9 +26,10 @@ Status: active implementation
 - [P2 gate CLOSED 2026-09-06] Controlled rollback-only live HRMS parallel-payroll UAT passed with reviewed components/profiles/mappings, immutable evidence, exact deduction reconciliation and zero Journal Entry/GL/VN Submission side effects.
 
 ## P3 — Statutory declarations
-- 01/GTGT, 05/KK-TNCN, 05/QTT-TNCN canonical declaration models.
-- TK1-TS, TK3-TS, D02-LT export models.
-- Format adapters remain separate from calculation logic.
+- [P3A implemented] `VN Tax Declaration` canonical preparation model for 01/GTGT, 05/KK-TNCN and 05/QTT-TNCN with source snapshots, deterministic hashes and release immutability.
+- [P3B implemented] `VN Social Insurance Export` canonical TK1-TS, TK3-TS and D02-LT builders pinned to current official BHXH source PDFs.
+- [P3B implemented] Read-only preview APIs are separate from explicit Prepared-record creation; no GL/Journal Entry/VN Submission/external transport side effects.
+- [P3C pending] Exact government form indicator/column/XML/XLS adapters, accountant-reviewed vectors and export UAT. Format adapters remain separate from calculation logic.
 
 ## P4 — E-invoice + external compliance adapters
 - Provider-neutral VN E-Invoice lifecycle and canonical payload.

@@ -1,0 +1,174 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-06 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "declaration_type",
+  "period_type",
+  "from_date",
+  "to_date",
+  "status",
+  "schema_version",
+  "legal_instrument",
+  "calculation_snapshot_json",
+  "calculation_snapshot_hash",
+  "declaration_json",
+  "declaration_hash",
+  "source_count",
+  "warning_json",
+  "prepared_at",
+  "reviewed_by",
+  "reviewed_at",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "declaration_type",
+   "fieldtype": "Select",
+   "label": "Declaration Type",
+   "options": "01_GTGT\n05_KK_TNCN\n05_QTT_TNCN",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "period_type",
+   "fieldtype": "Select",
+   "label": "Period Type",
+   "options": "Month\nQuarter\nYear\nCustom",
+   "reqd": 1
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nPrepared\nReviewed\nReleased\nVoided",
+   "default": "Draft",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "schema_version",
+   "fieldtype": "Data",
+   "label": "Schema Version",
+   "reqd": 1
+  },
+  {
+   "fieldname": "legal_instrument",
+   "fieldtype": "Link",
+   "label": "Legal Instrument",
+   "options": "VN Legal Instrument"
+  },
+  {
+   "fieldname": "calculation_snapshot_json",
+   "fieldtype": "Long Text",
+   "label": "Calculation Snapshot JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "calculation_snapshot_hash",
+   "fieldtype": "Data",
+   "label": "Calculation Snapshot Hash",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "declaration_json",
+   "fieldtype": "Long Text",
+   "label": "Canonical Declaration JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "declaration_hash",
+   "fieldtype": "Data",
+   "label": "Declaration Hash",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "source_count",
+   "fieldtype": "Int",
+   "label": "Source Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "warning_json",
+   "fieldtype": "Long Text",
+   "label": "Warnings JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "prepared_at",
+   "fieldtype": "Datetime",
+   "label": "Prepared At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_by",
+   "fieldtype": "Link",
+   "label": "Reviewed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reviewed_at",
+   "fieldtype": "Datetime",
+   "label": "Reviewed At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "modified": "2026-09-06 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Vietnam Localization",
+ "name": "VN Tax Declaration",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "hash"
+}
