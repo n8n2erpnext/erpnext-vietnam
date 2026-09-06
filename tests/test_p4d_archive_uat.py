@@ -23,6 +23,8 @@ class TestP4DArchiveUAT(unittest.TestCase):
         self.assertIn('"sandbox.einvoice.v1"', SOURCE)
         self.assertIn("frappe.db.rollback()", SOURCE)
         self.assertIn("delete_file(file_url)", SOURCE)
+        self.assertIn("os.remove(path)", SOURCE)
+        self.assertIn("physical_artifacts_clean", SOURCE)
         self.assertNotIn("frappe.db.commit()", SOURCE)
         self.assertIn('"GL Entry"', SOURCE)
         self.assertIn('"Journal Entry"', SOURCE)

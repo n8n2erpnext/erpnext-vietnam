@@ -9,7 +9,7 @@ from frappe.utils import now_datetime
 from erpnext_vietnam.declarations.canonical import canonical_json, payload_hash
 from erpnext_vietnam.integration.builtin import register_builtin_adapters
 from erpnext_vietnam.integration.contracts import AmbiguousTransportError, SubmissionEnvelope, SubmissionResult
-from erpnext_vietnam.integration.evidence import build_acceptance_snapshot, evidence_snapshot_hash
+from erpnext_vietnam.integration.evidence import build_acceptance_snapshot, evidence_snapshot_hash, validate_acceptance_evidence
 from erpnext_vietnam.integration.registry import get_adapter
 
 register_builtin_adapters()
@@ -157,6 +157,7 @@ def _persist_acceptance_evidence(submission, result: SubmissionResult) -> None:
         return
     from frappe.utils.file_manager import save_file
 
+    validate_acceptance_evidence(evidence)
     file_urls: dict[str, str] = {}
     for artifact in evidence.artifacts:
         file_doc = save_file(

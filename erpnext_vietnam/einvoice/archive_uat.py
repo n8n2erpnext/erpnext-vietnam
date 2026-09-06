@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 
 import frappe
 
@@ -29,6 +30,22 @@ def _file_bytes(file_url: str) -> bytes:
     return content.encode("utf-8") if isinstance(content, str) else bytes(content)
 
 
+
+
+def _cleanup_artifacts(file_urls: list[str]) -> bool:
+    from frappe.utils.file_manager import delete_file
+
+    paths = []
+    for file_url in file_urls:
+        filename = file_url.rsplit("/", 1)[-1]
+        path = frappe.get_site_path("private", "files", filename)
+        paths.append(path)
+        delete_file(file_url)
+        if os.path.exists(path):
+            os.remove(path)
+    return all(not os.path.exists(path) for path in paths)
+
+
 def run_einvoice_archive_rollback_uat(sales_invoice: str) -> dict:
     invoice = frappe.get_doc("Sales Invoice", sales_invoice)
     if invoice.docstatus != 1:
@@ -37,6 +54,7 @@ def run_einvoice_archive_rollback_uat(sales_invoice: str) -> dict:
     before = _counts()
     sandbox_einvoice_adapter.reset()
     file_urls: list[str] = []
+    physical_artifacts_clean = False
     result = {"sales_invoice": sales_invoice, "company": company, "before_counts": before}
     try:
         _settings(company)
@@ -138,10 +156,8 @@ def run_einvoice_archive_rollback_uat(sales_invoice: str) -> dict:
     finally:
         frappe.db.rollback()
         sandbox_einvoice_adapter.reset()
-        from frappe.utils.file_manager import delete_file
-        for file_url in file_urls:
-            delete_file(file_url)
+        physical_artifacts_clean = _cleanup_artifacts(file_urls)
     result["after_counts"] = _counts()
     result["rollback_clean"] = result["after_counts"] == before
-    result["orphan_artifacts_removed"] = bool(file_urls)
+    result["physical_artifacts_clean"] = physical_artifacts_clean
     return result
