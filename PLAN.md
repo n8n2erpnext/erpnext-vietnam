@@ -16,7 +16,7 @@ Status: active implementation
 - [P1A implemented] VAT legal classification (`NON_TAXABLE`, `ZERO_RATE_0`, `REDUCED_5`, `TEMP_REDUCED_8`, `STANDARD_10`) with effective-dated temporary-reduction rule resolution.
 - [P1A implemented] Additive Item/Sales Invoice/Purchase Invoice metadata + native Item Tax Template consistency validation + input-VAT evidence fields.
 - [P1B implemented] Complete TT99/2025 Appendix II catalog from the official Công Báo PDF (184 codes; 71 level-1) as immutable versioned reference data + read-only Company mapping preview.
-- [P1C pending] VAT declaration reconciliation/reporting after P1B account controls are configured.
+- [P1C implemented] Read-only pre-declaration VAT reconciliation from native GL + VAT snapshot/evidence coverage; no statutory filing or submission.
 
 ## P2 — Payroll compliance
 - PIT profile/dependents and effective-dated PIT calculation.
