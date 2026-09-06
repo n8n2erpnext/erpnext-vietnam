@@ -1,6 +1,6 @@
 # P3 — Statutory declarations and social-insurance exports
 
-Status: P3A/P3B canonical preparation layer implemented; exact government-format adapters and accountant-reviewed export UAT remain pending.
+Status: P3A/P3B canonical preparation, P3C statutory field contracts and P3D deterministic review exports are implemented. Accountant-reviewed full filing vectors and authority-specific direct-upload schemas remain pending.
 
 ## Boundary
 
@@ -38,4 +38,13 @@ BHXH official procedure page identifies `TK1-TS`, `TK3-TS` and `D02-LT`. Pinned 
 
 ## Remaining P3 gate
 
-P3C must implement exact form-indicator/column adapters separately from the canonical builders, then run controlled reconciliation/UAT against accountant-reviewed vectors. No direct government submission is part of the P3 gate; transport remains a later gateway phase.
+P3C field/column contracts and P3D deterministic review packages are implemented. The remaining closure gate is accountant-reviewed full filing vectors and, where direct machine upload is required, an authority-published schema/version that can be pinned and replay-tested. No external submission is part of P3; transport remains a later gateway phase.
+
+
+## P3D deterministic review export packages
+
+A Ready adapter can be exported as deterministic XML or XLSX for human review. Both formats carry the form code, adapter/legal-source version, stored hashes, indicators, row/column values, warnings and source references. The XLSX package uses fixed OOXML ZIP metadata so identical inputs produce identical bytes/hashes.
+
+The download APIs are permission-gated, reject Voided or `Needs Review` documents, and re-check the persisted adapter payload hash before serialization. Filenames include `-review` and the package metadata explicitly declares `human_review_not_direct_government_upload`. This is intentional: a legal form layout and a tax/BHXH authority machine-upload envelope are different contracts. The latter must not be invented from a PDF or HTKK UI; it is added only after an official machine schema/version is pinned.
+
+P3 therefore remains fail-closed. A package can be useful for accountant review without being misrepresented as a government-upload file, and no export path calls `VN Submission`, the Compliance Gateway or any external service.

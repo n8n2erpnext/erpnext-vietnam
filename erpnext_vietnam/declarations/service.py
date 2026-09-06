@@ -10,6 +10,7 @@ from erpnext_vietnam.declarations.adapters.bhxh_qd505_1040 import adapt_social_i
 from erpnext_vietnam.declarations.adapters.tax_tt89 import adapt_tax_declaration
 from erpnext_vietnam.declarations.bhxh import build_d02_lt, build_tk1_ts, build_tk3_ts
 from erpnext_vietnam.declarations.canonical import canonical_json, payload_hash
+from erpnext_vietnam.declarations.exporters.review import build_review_export, export_filename, export_mimetype
 from erpnext_vietnam.declarations.registry import BHXH_FORMS, TAX_FORMS
 from erpnext_vietnam.declarations.tax import build_01_gtgt, build_05_kk_tncn, build_05_qtt_tncn
 
@@ -252,3 +253,63 @@ def create_social_insurance_export(export_type: str, company: str | None = None,
         "prepared_at": now_datetime(),
     }).insert(ignore_permissions=True)
     return doc.as_dict()
+
+
+
+def _load_ready_adapter_document(doctype: str, name: str):
+    doc = frappe.get_doc(doctype, name)
+    if not doc.has_permission("read"):
+        frappe.throw(f"Not permitted to read {doctype}", frappe.PermissionError)
+    if doc.status == "Voided":
+        frappe.throw("Voided statutory documents cannot be exported")
+    if doc.adapter_status != "Ready":
+        frappe.throw("Statutory adapter must be Ready before generating a review export")
+    try:
+        adapter = json.loads(doc.adapter_payload_json or "{}")
+    except json.JSONDecodeError:
+        frappe.throw("Stored adapter payload is invalid JSON")
+    current_hash = payload_hash(adapter)
+    if doc.adapter_payload_hash and current_hash != doc.adapter_payload_hash:
+        frappe.throw("Stored adapter payload hash does not match document content")
+    return doc, adapter
+
+
+def _serve_review_export(doc, adapter: dict, export_format: str, form_code: str):
+    metadata = {
+        "doctype": doc.doctype,
+        "document_name": doc.name,
+        "company": getattr(doc, "company", None),
+        "status": doc.status,
+        "schema_version": getattr(doc, "schema_version", None),
+        "from_date": getattr(doc, "from_date", None),
+        "to_date": getattr(doc, "to_date", None),
+        "calculation_snapshot_hash": getattr(doc, "calculation_snapshot_hash", None),
+        "declaration_hash": getattr(doc, "declaration_hash", None),
+        "canonical_payload_hash": getattr(doc, "payload_hash", None),
+        "stored_adapter_payload_hash": getattr(doc, "adapter_payload_hash", None),
+        "package_purpose": "human_review_not_direct_government_upload",
+    }
+    try:
+        content = build_review_export(adapter, export_format, metadata)
+        filename = export_filename(form_code, doc.name, export_format)
+        mimetype = export_mimetype(export_format)
+    except ValueError as exc:
+        frappe.throw(str(exc))
+    frappe.local.response.filename = filename
+    frappe.local.response.filecontent = content
+    frappe.local.response.type = "download"
+    frappe.local.response.content_type = mimetype
+
+
+@frappe.whitelist()
+def download_tax_declaration_review(name: str, export_format: str = "xlsx"):
+    doc, adapter = _load_ready_adapter_document("VN Tax Declaration", name)
+    form_code = TAX_FORMS[doc.declaration_type].code
+    return _serve_review_export(doc, adapter, export_format, form_code)
+
+
+@frappe.whitelist()
+def download_social_insurance_export_review(name: str, export_format: str = "xlsx"):
+    doc, adapter = _load_ready_adapter_document("VN Social Insurance Export", name)
+    form_code = BHXH_FORMS[doc.export_type].code
+    return _serve_review_export(doc, adapter, export_format, form_code)
