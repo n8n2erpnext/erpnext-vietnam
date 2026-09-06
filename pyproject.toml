@@ -1,6 +1,6 @@
 [project]
 name = "erpnext_vietnam"
-version = "0.1.0-dev"
+version = "0.1.0-rc1"
 description = "Universal Vietnam localization and compliance layer for Frappe/ERPNext/HRMS"
 requires-python = ">=3.12"
 readme = "README.md"
