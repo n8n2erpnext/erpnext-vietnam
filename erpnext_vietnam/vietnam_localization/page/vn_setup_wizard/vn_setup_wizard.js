@@ -27,7 +27,7 @@ frappe.pages["vn-setup-wizard"].on_page_load = function (wrapper) {
 	});
 
 	frappe.call({
-		method: "erpnext_vietnam.setup.setup_wizard.get_vn_business_profile_options",
+		method: "erpnext_vietnam.setup.setup_wizard.get_domain_profile_options",
 		callback: (r) => {
 			const options = (r.message || []).map((row) => row.code || row.value || row).join("\n");
 			fields.vn_business_profile.df.options = options;
