@@ -21,7 +21,8 @@ class VNIntegrationEndpoint(Document):
                 frappe.throw("Capabilities JSON must be an array or object")
         if self.enabled:
             from erpnext_vietnam.integration.builtin import register_builtin_adapters
-            from erpnext_vietnam.integration.registry import get_adapter
+            from erpnext_vietnam.integration.certification import certification_hash
+            from erpnext_vietnam.integration.registry import get_adapter, require_production_certification
 
             register_builtin_adapters()
             try:
@@ -30,3 +31,13 @@ class VNIntegrationEndpoint(Document):
                 frappe.throw(str(exc))
             if adapter.channel != self.channel:
                 frappe.throw("Enabled endpoint channel must match its registered adapter")
+            if self.environment == "PRODUCTION":
+                try:
+                    certification = require_production_certification(self.adapter, self.channel)
+                except ValueError as exc:
+                    frappe.throw(str(exc))
+                self.adapter_certification_version = certification.certification_version
+                self.adapter_certification_hash = certification_hash(certification)
+            else:
+                self.adapter_certification_version = None
+                self.adapter_certification_hash = None

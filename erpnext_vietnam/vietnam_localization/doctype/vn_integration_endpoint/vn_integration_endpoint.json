@@ -10,6 +10,8 @@
   "adapter",
   "channel",
   "environment",
+  "adapter_certification_version",
+  "adapter_certification_hash",
   "enabled",
   "base_url",
   "credential_reference",
@@ -93,6 +95,19 @@
    "fieldname": "notes",
    "fieldtype": "Small Text",
    "label": "Notes"
+  },
+  {
+   "fieldname": "adapter_certification_version",
+   "fieldtype": "Data",
+   "label": "Adapter Certification Version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "adapter_certification_hash",
+   "fieldtype": "Data",
+   "label": "Adapter Certification Hash",
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "links": [],

@@ -8,9 +8,10 @@ from frappe.utils import now_datetime
 
 from erpnext_vietnam.declarations.canonical import canonical_json, payload_hash
 from erpnext_vietnam.integration.builtin import register_builtin_adapters
+from erpnext_vietnam.integration.certification import certification_hash
 from erpnext_vietnam.integration.contracts import AmbiguousTransportError, SubmissionEnvelope, SubmissionResult
 from erpnext_vietnam.integration.evidence import build_acceptance_snapshot, evidence_snapshot_hash, validate_acceptance_evidence
-from erpnext_vietnam.integration.registry import get_adapter
+from erpnext_vietnam.integration.registry import get_adapter, require_production_certification
 
 register_builtin_adapters()
 
@@ -62,6 +63,14 @@ def _load_endpoint(endpoint_name: str, company: str, operation: str):
         frappe.throw(f"Endpoint does not enable {operation}")
     if endpoint.environment == "PRODUCTION" and endpoint.adapter.startswith("sandbox."):
         frappe.throw("Sandbox adapters cannot be used by a PRODUCTION endpoint")
+    if endpoint.environment == "PRODUCTION":
+        try:
+            certification = require_production_certification(endpoint.adapter, endpoint.channel)
+        except ValueError as exc:
+            frappe.throw(str(exc))
+        current_hash = certification_hash(certification)
+        if endpoint.adapter_certification_version != certification.certification_version or endpoint.adapter_certification_hash != current_hash:
+            frappe.throw("Production endpoint adapter certification pin is missing or stale; review and save the endpoint")
     return endpoint, adapter
 
 
