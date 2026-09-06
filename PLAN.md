@@ -51,7 +51,7 @@ Source of truth: host workspace `/home/ubuntu/n8n2erpnext/.erpnext-vietnam-local
 ## P5 — Release hardening + operator UX
 - [P5A implemented/deployed] Read-only Vietnam Localization Health reports Company setup, accounting/VAT mapping readiness, payroll/e-invoice readiness, gateway state and production-endpoint certification pins without changing data. Live validation on `LightBI Inc` returned `READY_WITH_WARNINGS`, correctly identifying empty COA mappings and missing e-invoice profile while keeping Compliance Gateway disabled.
 - [P5B implemented/live doctor PASS] Read-only release doctor verifies supported Frappe/ERPNext v16, optional HRMS v16, critical DocTypes/Pages, 15/15 business-profile seeds, setup-snapshot SHA-256 integrity, sandbox-production exclusion and production certification pins. Live doctor on `erp.thaiduy.digital` returned PASS with 0 failures/0 warnings on Frappe 16.17.0 / ERPNext 16.16.0 / HRMS 16.5.4.
-- [P5C next] Freeze a release candidate only after clean install + upgrade + configured-company regression UAT; real provider adapters remain separately certified artifacts.
+- [P5C harness implemented; release-candidate gate pending] `scripts/p5_release_smoke.py` runs app tests + release doctor before/after an explicitly opted-in migrate on a pre-provisioned disposable/test site. Current production-site read-only regression may use it without `--migrate`; a release-candidate tag still requires a clean MariaDB install replay. SQLite is not accepted as the clean-install gate because Frappe v16 marks it experimental and ERPNext install hit an upstream SQLite lock during this session.
 
 ## Release gates
 - Frappe/ERPNext/HRMS core unchanged.

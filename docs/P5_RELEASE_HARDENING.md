@@ -35,3 +35,12 @@ bench --site your-site execute erpnext_vietnam.diagnostics.release_doctor.run
 ```
 
 P5C will replay a clean install plus an upgrade/configured-company regression before any release-candidate tag is created.
+
+
+## P5C — Release smoke harness
+
+`scripts/p5_release_smoke.py` deliberately operates only on an already provisioned site. It runs the app unit suite, requires Release Doctor PASS, optionally performs `bench migrate` only when `--migrate` is explicitly supplied, then requires Release Doctor PASS again. Site/database provisioning is outside the runner so production credentials and destructive lifecycle operations are never embedded in the repository.
+
+A disposable SQLite site was tested as a possible isolated clean-install target. Frappe v16 itself labels SQLite support experimental, and ERPNext installation encountered an upstream SQLite `database is locked` error during its own after-install customization before `erpnext_vietnam` was installed. The temporary site was removed and production remained HTTP 200. Therefore SQLite is explicitly not accepted as the release-candidate clean-install gate.
+
+The remaining P5C release-candidate gate is a clean MariaDB site in a dedicated disposable environment, followed by ERPNext install, `erpnext_vietnam` install, doctor PASS, migrate replay, doctor PASS, and configured-company regression. No RC tag is created before that gate.
