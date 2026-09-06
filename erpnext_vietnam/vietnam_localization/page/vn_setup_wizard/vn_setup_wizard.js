@@ -13,12 +13,12 @@ frappe.pages["vn-setup-wizard"].on_page_load = function (wrapper) {
 
 	const definitions = [
 		{ fieldname: "company", label: __("Company"), fieldtype: "Link", options: "Company", reqd: 1 },
-		{ fieldname: "business_domain", label: __("Business Domain"), fieldtype: "Select", reqd: 1 },
-		{ fieldname: "accounting_regime", label: __("Accounting Regime"), fieldtype: "Select", options: "TT99_2025\nTT133_2016\nCUSTOM_REVIEW_REQUIRED", reqd: 1 },
-		{ fieldname: "vat_method", label: __("VAT Method"), fieldtype: "Select", options: "DEDUCTION\nDIRECT\nNOT_CONFIGURED", reqd: 1 },
-		{ fieldname: "enable_pit_payroll", label: __("Enable PIT Payroll"), fieldtype: "Check" },
-		{ fieldname: "enable_social_insurance", label: __("Enable BHXH/BHYT/BHTN"), fieldtype: "Check" },
-		{ fieldname: "enable_einvoice", label: __("Prepare E-Invoice Features"), fieldtype: "Check" },
+		{ fieldname: "vn_business_profile", label: __("Business Domain"), fieldtype: "Select", reqd: 1 },
+		{ fieldname: "vn_accounting_regime", label: __("Accounting Regime"), fieldtype: "Select", options: "TT99_2025\nTT133_2016\nCUSTOM_REVIEW_REQUIRED", reqd: 1 },
+		{ fieldname: "vn_vat_method", label: __("VAT Method"), fieldtype: "Select", options: "DEDUCTION\nDIRECT\nNOT_CONFIGURED", reqd: 1 },
+		{ fieldname: "vn_enable_payroll_compliance", label: __("Enable PIT Payroll"), fieldtype: "Check" },
+		{ fieldname: "vn_enable_social_insurance", label: __("Enable BHXH/BHYT/BHTN"), fieldtype: "Check" },
+		{ fieldname: "vn_enable_einvoice", label: __("Prepare E-Invoice Features"), fieldtype: "Check" },
 	];
 
 	definitions.forEach((df) => {
@@ -27,11 +27,11 @@ frappe.pages["vn-setup-wizard"].on_page_load = function (wrapper) {
 	});
 
 	frappe.call({
-		method: "erpnext_vietnam.setup.setup_wizard.get_business_domain_options",
+		method: "erpnext_vietnam.setup.setup_wizard.get_vn_business_profile_options",
 		callback: (r) => {
-			const options = (r.message || []).map((row) => row.value || row.code || row).join("\n");
-			fields.business_domain.df.options = options;
-			fields.business_domain.refresh();
+			const options = (r.message || []).map((row) => row.code || row.value || row).join("\n");
+			fields.vn_business_profile.df.options = options;
+			fields.vn_business_profile.refresh();
 		},
 	});
 
@@ -42,7 +42,7 @@ frappe.pages["vn-setup-wizard"].on_page_load = function (wrapper) {
 	}
 
 	function validate_required(data) {
-		for (const key of ["company", "business_domain", "accounting_regime", "vat_method"]) {
+		for (const key of ["company", "vn_business_profile", "vn_accounting_regime", "vn_vat_method"]) {
 			if (!data[key]) {
 				frappe.msgprint(__("Please complete all required fields."));
 				return false;
