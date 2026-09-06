@@ -10,6 +10,7 @@ from frappe.utils import getdate
 
 from erpnext_vietnam.accounting.roles import VAT_INPUT_ROLE, VAT_OUTPUT_ROLE
 from erpnext_vietnam.accounting.service import resolve_coa_mapping
+from erpnext_vietnam.declarations.vat_reporting import resolve_reporting_category
 from erpnext_vietnam.legal.models import EffectiveRule, LegalReference
 from erpnext_vietnam.vat.models import VATClassificationDefinition
 from erpnext_vietnam.vat.resolver import VATClassificationError, resolve_vat
@@ -112,27 +113,55 @@ def validate_invoice_vat(doc, method=None):
 
     for row in doc.items:
         classification = _row_classification(row)
-        if not classification:
-            if strict:
-                frappe.throw(f"Row {row.idx}: VN VAT Classification is required in Strict mode")
-            continue
-        classified += 1
-        result = resolve_classification(classification, when)
-        row.vn_vat_classification = classification
-        row.vn_vat_treatment = result.treatment
-        row.vn_vat_rate = float(result.rate)
-        row.vn_vat_snapshot_hash = result.snapshot_hash
-        native_rate = _native_vat_rate(row, vat_account)
-        if native_rate is not None and native_rate != result.rate:
-            frappe.throw(
-                f"Row {row.idx}: ERPNext Item Tax Template VAT rate {native_rate}% does not match "
-                f"VN classification {result.treatment} ({result.rate}%)"
+        reporting_name = getattr(row, "vn_vat_reporting_category", None)
+        direction = "Output" if doc.doctype == "Sales Invoice" else "Input"
+        result = None
+
+        if classification:
+            classified += 1
+            result = resolve_classification(classification, when)
+            row.vn_vat_classification = classification
+            row.vn_vat_treatment = result.treatment
+            row.vn_vat_rate = float(result.rate)
+            row.vn_vat_snapshot_hash = result.snapshot_hash
+            native_rate = _native_vat_rate(row, vat_account)
+            if native_rate is not None and native_rate != result.rate:
+                frappe.throw(
+                    f"Row {row.idx}: ERPNext Item Tax Template VAT rate {native_rate}% does not match "
+                    f"VN classification {result.treatment} ({result.rate}%)"
+                )
+        elif hasattr(row, "vn_vat_snapshot_hash"):
+            row.vn_vat_snapshot_hash = None
+
+        reporting = None
+        reporting_snapshot_hash = None
+        if reporting_name:
+            reporting = resolve_reporting_category(
+                reporting_name, direction, when, result.treatment if result else None
             )
+            reporting_snapshot_hash = reporting["snapshot_hash"]
+            if hasattr(row, "vn_vat_reporting_snapshot_hash"):
+                row.vn_vat_reporting_snapshot_hash = reporting_snapshot_hash
+        elif hasattr(row, "vn_vat_reporting_snapshot_hash"):
+            row.vn_vat_reporting_snapshot_hash = None
+
+        if not classification and strict:
+            # Reporting-only buckets [32a]/[32b]/[34a] are intentionally separate from VAT-rate treatment.
+            reporting_only = reporting and reporting.get("treatment_constraint") == "ANY_REVIEW" and direction == "Output"
+            if not reporting_only:
+                frappe.throw(f"Row {row.idx}: VN VAT Classification is required in Strict mode")
+
         if doc.doctype == "Purchase Invoice":
             ratio = getattr(row, "vn_input_vat_deductible_ratio", None)
             if ratio not in (None, "") and not (0 <= float(ratio) <= 100):
                 frappe.throw(f"Row {row.idx}: deductible input VAT ratio must be between 0 and 100")
-        snapshot_rows.append({"idx": row.idx, "classification": classification, "snapshot_hash": result.snapshot_hash})
+
+        if classification or reporting_name:
+            snapshot_rows.append({
+                "idx": row.idx, "classification": classification,
+                "snapshot_hash": result.snapshot_hash if result else None,
+                "reporting_category": reporting_name, "reporting_snapshot_hash": reporting_snapshot_hash,
+            })
 
     payload = json.dumps(snapshot_rows, sort_keys=True, separators=(",", ":"))
     if hasattr(doc, "vn_vat_snapshot_hash"):

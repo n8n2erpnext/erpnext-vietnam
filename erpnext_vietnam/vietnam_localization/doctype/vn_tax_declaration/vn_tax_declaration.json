@@ -12,6 +12,10 @@
   "to_date",
   "status",
   "schema_version",
+  "adapter_version",
+  "adapter_status",
+  "adapter_payload_json",
+  "adapter_payload_hash",
   "legal_instrument",
   "calculation_snapshot_json",
   "calculation_snapshot_hash",
@@ -77,6 +81,34 @@
    "fieldtype": "Data",
    "label": "Schema Version",
    "reqd": 1
+  },
+  {
+   "fieldname": "adapter_version",
+   "fieldtype": "Data",
+   "label": "Adapter Version",
+   "read_only": 1
+  },
+  {
+   "fieldname": "adapter_status",
+   "fieldtype": "Select",
+   "label": "Adapter Status",
+   "options": "Needs Review\nReady",
+   "default": "Needs Review",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "adapter_payload_json",
+   "fieldtype": "Long Text",
+   "label": "Statutory Adapter Payload JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "adapter_payload_hash",
+   "fieldtype": "Data",
+   "label": "Adapter Payload Hash",
+   "read_only": 1,
+   "search_index": 1
   },
   {
    "fieldname": "legal_instrument",

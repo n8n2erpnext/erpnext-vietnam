@@ -26,7 +26,7 @@ def _active_social_profile(employee: str, when):
     rows = frappe.get_all(
         "VN Social Insurance Profile",
         filters={"employee": employee, "effective_from": ["<=", when]},
-        fields=["name", "participate_bhxh", "participate_bhyt", "participate_bhtn", "participate_oai", "wage_region", "contribution_category", "effective_from", "effective_to", "rule_set"],
+        fields=["name", "social_insurance_number", "participate_bhxh", "participate_bhyt", "participate_bhtn", "participate_oai", "wage_region", "contribution_category", "effective_from", "effective_to", "rule_set"],
         order_by="effective_from desc",
     )
     rows = [row for row in rows if not row.effective_to or getdate(row.effective_to) >= when]
@@ -84,6 +84,9 @@ def build_tk3_ts(company: str, as_of_date) -> dict:
 
 def build_d02_lt(company: str, from_date, to_date) -> dict:
     from_date, to_date = getdate(from_date), getdate(to_date)
+    company_master = _safe_values("Company", company, [
+        "name", "company_name", "tax_id", "phone_no", "email", "registration_details", "country", "default_currency",
+    ])
     slips = frappe.get_all(
         "Salary Slip",
         filters={"company": company, "docstatus": 1, "end_date": ["between", [from_date, to_date]]},
@@ -110,9 +113,17 @@ def build_d02_lt(company: str, from_date, to_date) -> dict:
         lines = by_slip.get(slip.name, {})
         if not lines:
             warnings.append(f"Salary Slip {slip.name} has no social-insurance evidence.")
+        employee_master = _safe_values("Employee", slip.employee, [
+            "name", "employee_name", "gender", "date_of_birth", "passport_number",
+            "designation", "employment_type", "department", "date_of_joining", "contract_end_date",
+            "current_address", "permanent_address", "cell_number", "personal_email",
+        ])
+        social_profile = _active_social_profile(slip.employee, slip.end_date)
         rows.append({
             "employee": slip.employee,
             "employee_name": slip.employee_name,
+            "employee_master": employee_master,
+            "social_insurance_profile": social_profile,
             "salary_slip": slip.name,
             "period_end": str(slip.end_date),
             "snapshot_hash": slip.vn_payroll_snapshot_hash,
@@ -132,6 +143,7 @@ def build_d02_lt(company: str, from_date, to_date) -> dict:
         "form_code": "D02-LT",
         "schema_version": "canonical-v1",
         "company": company,
+        "company_master": company_master,
         "period": {"from_date": str(from_date), "to_date": str(to_date)},
         "rows": rows,
         "source_reference": "BHXH administrative procedure ItemID=71",

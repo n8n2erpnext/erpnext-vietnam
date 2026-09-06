@@ -13,8 +13,8 @@ class FormSpec:
 
 
 TAX_FORMS = {
-    "01_GTGT": FormSpec("01/GTGT", "VAT declaration", "TAX", ("Month", "Quarter"), "canonical-v1"),
-    "05_KK_TNCN": FormSpec("05/KK-TNCN", "Periodic PIT withholding declaration", "TAX", ("Month", "Quarter"), "canonical-v1"),
+    "01_GTGT": FormSpec("01/GTGT", "VAT declaration", "TAX", ("Month", "Quarter"), "canonical-v2"),
+    "05_KK_TNCN": FormSpec("05/KK-TNCN", "Periodic PIT withholding declaration", "TAX", ("Quarter",), "canonical-v1"),
     "05_QTT_TNCN": FormSpec("05/QTT-TNCN", "Annual PIT finalization declaration", "TAX", ("Year",), "canonical-v1"),
 }
 

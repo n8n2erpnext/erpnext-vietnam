@@ -19,7 +19,8 @@ TRANSITIONS = {
 IMMUTABLE_RELEASED = {
     "company", "export_type", "subject_doctype", "subject_name", "from_date", "to_date",
     "schema_version", "source_reference", "source_url", "source_sha256",
-    "canonical_payload_json", "payload_hash", "source_count", "warning_json",
+    "canonical_payload_json", "payload_hash", "adapter_version", "adapter_status",
+    "adapter_payload_json", "adapter_payload_hash", "source_count", "warning_json",
 }
 
 
@@ -35,12 +36,18 @@ class VNSocialInsuranceExport(Document):
     def _validate_payload(self):
         try:
             payload = json.loads(self.canonical_payload_json or "{}")
+            adapter = json.loads(self.adapter_payload_json or "{}")
             warnings = json.loads(self.warning_json or "[]")
         except json.JSONDecodeError:
             frappe.throw("Social-insurance export JSON fields must contain valid JSON")
         if not isinstance(warnings, list):
             frappe.throw("Warnings JSON must be a JSON array")
         self.payload_hash = payload_hash(payload)
+        self.adapter_payload_hash = payload_hash(adapter)
+        self.adapter_version = adapter.get("adapter_version") or self.adapter_version
+        self.adapter_status = "Ready" if adapter.get("ready") is True else "Needs Review"
+        if self.status in {"Reviewed", "Released"} and self.adapter_status != "Ready":
+            frappe.throw("Social-insurance export cannot be Reviewed or Released until the statutory adapter is Ready")
         if self.export_type == "D02_LT":
             self.source_count = len(payload.get("rows") or [])
         else:
