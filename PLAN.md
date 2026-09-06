@@ -23,7 +23,7 @@ Status: active implementation
 - [P2A implemented] BHXH/BHYT/BHTN/BHTNLĐ-BNN ordinary contribution engine with 2026 reference-level transition and wage-region ceilings.
 - [P2B implemented] Optional-HRMS Salary Component legal metadata + Salary Slip validation and immutable calculation-line snapshots; HRMS remains optional.
 - [P2C implemented] Effective-dated contribution-to-HRMS-component mapping, Salary Slip deduction reconciliation report, payroll payable semantic roles and read-only employer accrual preview.
-- [P2 gate pending] Live parallel-payroll UAT with reviewed Salary Components/profiles/mappings; no automatic Journal Entry posting is allowed at this gate.
+- [P2 gate CLOSED 2026-09-06] Controlled rollback-only live HRMS parallel-payroll UAT passed with reviewed components/profiles/mappings, immutable evidence, exact deduction reconciliation and zero Journal Entry/GL/VN Submission side effects.
 
 ## P3 — Statutory declarations
 - 01/GTGT, 05/KK-TNCN, 05/QTT-TNCN canonical declaration models.

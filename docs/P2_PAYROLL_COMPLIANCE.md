@@ -1,6 +1,6 @@
 # P2 — Vietnam Payroll Compliance
 
-Status: P2A/P2B/P2C implementation checkpoint; live parallel-payroll UAT remains required before the P2 release gate.
+Status: P2 release gate CLOSED 2026-09-06 after controlled rollback-only live HRMS parallel-payroll UAT.
 
 ## Boundary
 
@@ -47,6 +47,14 @@ On submit, P2 creates immutable `VN Payroll Calculation Line` records. Their can
 
 The employer accrual API resolves semantic payable roles (`3335`, `3383`, `3384`, `3386` are catalog metadata behind Company-specific `VN COA Mapping`) and returns a read-only credit-side preview. It deliberately does not select expense allocation, create a Journal Entry or submit accounting. Expense allocation across production/sales/admin functions remains an explicit accounting decision.
 
-## P2 release gate still pending
+## P2 release gate — CLOSED 2026-09-06
 
-The site must run at least one controlled parallel payroll with reviewed Salary Components, employee tax/social profiles, wage region, contribution mappings and Company localization enabled. The independent P2 result must reconcile to HRMS deductions and the accountant-reviewed employer accrual before P2 is labeled production compliance-ready. P3 owns 05/KK-TNCN, 05/QTT-TNCN and BHXH administrative exports.
+A controlled live-site parallel payroll UAT exercised the real HRMS Salary Structure, Assignment and submitted Salary Slip flow while all test records remained inside one database transaction and were rolled back afterward. The gate scenario used a September 2026 monthly VND payroll, resident employee with no dependents, Region I, 30,000,000 VND gross pay and ordinary compulsory-insurance participation.
+
+Independent P2 calculation produced employee insurance of 3,150,000 VND, PIT of 635,000 VND, total employee deductions of 3,785,000 VND and net pay of 26,215,000 VND. The employer contribution preview produced 6,450,000 VND. HRMS actual deduction rows reconciled exactly to the independent statutory evidence with status `MATCH`, and Salary Slip submit produced 13 immutable `VN Payroll Calculation Line` rows for the snapshot.
+
+The UAT also asserted that Journal Entry, GL Entry and `VN Submission` counts were unchanged before, during and after the test. All temporary Company settings, employee, holiday list, Salary Components, Salary Structure/Assignment, profiles, mappings and evidence were removed by transaction rollback. The deployed Company therefore remains unconfigured after the gate test.
+
+The repeatable harness is `scripts/p2_parallel_uat.py`. It is consumer-neutral, requires `--site`, `--company` and `--bench`, performs a real HRMS submit/reconciliation cycle, verifies no accounting/gateway side effects and always rolls the transaction back.
+
+Closing this engineering/UAT release gate does not constitute legal certification. P3 owns statutory declaration/export models including 01/GTGT, 05/KK-TNCN, 05/QTT-TNCN and BHXH administrative exports.

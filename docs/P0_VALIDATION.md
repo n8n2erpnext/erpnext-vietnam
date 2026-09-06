@@ -24,9 +24,9 @@ The Desk page is restricted to System Manager, offers Preview before Apply, and 
 
 ## Read-only preview validation
 
-A real-site preview was executed for Company `LightBI Inc` with profile `SOFTWARE_SAAS`, accounting regime `TT99_2025`, VAT method `DEDUCTION`, and payroll/social-insurance/e-invoice toggles disabled. The backend returned deterministic snapshot hash `4e7b710cb69c836fe45b168e22898c4fceab9b83aa6b7d790a7b90e3212d307d`.
+A real-site preview was executed against a controlled deployment test Company with profile `SOFTWARE_SAAS`, accounting regime `TT99_2025`, VAT method `DEDUCTION`, and payroll/social-insurance/e-invoice toggles disabled. The backend returned deterministic snapshot hash `4e7b710cb69c836fe45b168e22898c4fceab9b83aa6b7d790a7b90e3212d307d`.
 
-The preview explicitly returned `enable_compliance_gateway: false`, no warnings, and the planned changes only. `VN Localization Settings` remained at zero rows after preview, proving the preview path is non-mutating. No setup profile has been applied to `LightBI Inc`.
+The preview explicitly returned `enable_compliance_gateway: false`, no warnings, and the planned changes only. `VN Localization Settings` remained at zero rows after preview, proving the preview path is non-mutating. No setup profile was applied by the validation run.
 
 ## Automated checks
 
