@@ -12,10 +12,11 @@ Status: active implementation
 7. Tests for historical reproducibility, rule overlap rejection, domain-profile stability and idempotency.
 
 ## P1 — Accounting + VAT
-- TT99/2025 chart-of-accounts dataset imported as versioned legal data after direct Appendix II verification.
-- VN statutory role mapping to ERPNext Account.
-- VAT treatment classification (`NON_TAXABLE`, `ZERO_RATE_0`, `REDUCED_5`, `TEMP_REDUCED_8`, `STANDARD_10`).
-- Sales/Purchase Invoice validation, input-VAT evidence and declaration reconciliation.
+- [P1A implemented] VN statutory-role mapping with overlap prevention and Company/account validation.
+- [P1A implemented] VAT legal classification (`NON_TAXABLE`, `ZERO_RATE_0`, `REDUCED_5`, `TEMP_REDUCED_8`, `STANDARD_10`) with effective-dated temporary-reduction rule resolution.
+- [P1A implemented] Additive Item/Sales Invoice/Purchase Invoice metadata + native Item Tax Template consistency validation + input-VAT evidence fields.
+- [P1B pending] Complete TT99/2025 Appendix II chart-of-accounts dataset import after direct Appendix II verification and mapping assistant.
+- [P1C pending] VAT declaration reconciliation/reporting after P1B account controls are configured.
 
 ## P2 — Payroll compliance
 - PIT profile/dependents and effective-dated PIT calculation.

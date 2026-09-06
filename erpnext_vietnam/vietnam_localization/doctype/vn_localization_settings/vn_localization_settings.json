@@ -9,6 +9,7 @@
   "business_profile",
   "accounting_regime",
   "vat_method",
+  "vat_validation_mode",
   "features_section",
   "enable_payroll_compliance",
   "enable_social_insurance",
@@ -50,6 +51,14 @@
    "fieldtype": "Select",
    "label": "VAT Method",
    "options": "DEDUCTION\nDIRECT\nNOT_CONFIGURED",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vat_validation_mode",
+   "fieldtype": "Select",
+   "label": "VAT Validation Mode",
+   "options": "Off\nAdvisory\nStrict",
+   "default": "Advisory",
    "reqd": 1
   },
   {

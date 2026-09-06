@@ -18,3 +18,12 @@ setup_wizard_stages = "erpnext_vietnam.setup.setup_wizard.get_setup_stages"
 
 # Safe install lifecycle: seed reference profiles only.
 after_install = "erpnext_vietnam.setup.install.after_install"
+
+after_migrate = "erpnext_vietnam.setup.install.after_migrate"
+
+# P1 additive validation hooks. ERPNext remains the tax calculation and GL engine.
+doc_events = {
+    "Item": {"validate": "erpnext_vietnam.vat.service.validate_item"},
+    "Sales Invoice": {"validate": "erpnext_vietnam.vat.service.validate_sales_invoice"},
+    "Purchase Invoice": {"validate": "erpnext_vietnam.vat.service.validate_purchase_invoice"},
+}

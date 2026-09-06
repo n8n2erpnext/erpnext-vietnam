@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:code",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "code",
+  "title",
+  "classification_status",
+  "treatment",
+  "statutory_rate",
+  "temporary_reduction_eligible",
+  "effective_from",
+  "effective_to",
+  "rule_set",
+  "legal_instrument",
+  "legal_reference_detail",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Code",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "classification_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nReleased\nRetired",
+   "default": "Draft",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "treatment",
+   "fieldtype": "Select",
+   "label": "VAT Treatment",
+   "options": "NON_TAXABLE\nZERO_RATE_0\nREDUCED_5\nTEMP_REDUCED_8\nSTANDARD_10",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "statutory_rate",
+   "fieldtype": "Float",
+   "label": "Statutory Rate (%)",
+   "precision": "6",
+   "reqd": 1
+  },
+  {
+   "fieldname": "temporary_reduction_eligible",
+   "fieldtype": "Check",
+   "label": "Eligible for Temporary Reduction",
+   "default": "0"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "rule_set",
+   "fieldtype": "Link",
+   "label": "Rule Set",
+   "options": "VN Rule Set"
+  },
+  {
+   "fieldname": "legal_instrument",
+   "fieldtype": "Link",
+   "label": "Primary Legal Instrument",
+   "options": "VN Legal Instrument",
+   "reqd": 1
+  },
+  {
+   "fieldname": "legal_reference_detail",
+   "fieldtype": "Data",
+   "label": "Article / Clause Reference"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN VAT Classification",
+ "naming_rule": "By fieldname",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "title_field": "title"
+}
