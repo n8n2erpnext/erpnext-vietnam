@@ -15,3 +15,6 @@ required_apps = ["erpnext"]
 setup_wizard_requires = "assets/erpnext_vietnam/js/setup_wizard.js"
 setup_wizard_stages = "erpnext_vietnam.setup.setup_wizard.get_setup_stages"
 
+
+# Safe install lifecycle: seed reference profiles only.
+after_install = "erpnext_vietnam.setup.install.after_install"

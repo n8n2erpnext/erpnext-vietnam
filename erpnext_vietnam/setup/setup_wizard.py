@@ -76,6 +76,33 @@ def build_setup_snapshot(args, company: str) -> dict[str, object]:
     }
 
 
+@frappe.whitelist()
+def preview_localization_profile(args=None):
+    args = frappe._dict(args or {})
+    company = _resolve_company(args)
+    if not company:
+        frappe.throw(_("A valid Company is required to preview ERPNext Vietnam setup."))
+    snapshot = build_setup_snapshot(args, company)
+    payload = json.dumps(snapshot, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    warnings = []
+    if snapshot["accounting_regime"] == "CUSTOM_REVIEW_REQUIRED":
+        warnings.append(_("Custom accounting regime requires accountant review before statutory mappings are applied."))
+    if snapshot["vat_method"] == "NOT_CONFIGURED":
+        warnings.append(_("VAT method is not configured; VAT automation will remain inactive."))
+    if snapshot["enable_einvoice"]:
+        warnings.append(_("E-invoice preparation does not enable any external submission endpoint."))
+    return {
+        "snapshot": snapshot,
+        "snapshot_hash": hashlib.sha256(payload.encode("utf-8")).hexdigest(),
+        "warnings": warnings,
+        "changes": [
+            _("Create or update VN Localization Settings for {0}").format(company),
+            _("Keep VN Compliance Gateway disabled"),
+            _("Do not alter submitted accounting or payroll documents"),
+        ],
+    }
+
+
 def apply_localization_profile(args):
     args = frappe._dict(args or {})
     company = _resolve_company(args)

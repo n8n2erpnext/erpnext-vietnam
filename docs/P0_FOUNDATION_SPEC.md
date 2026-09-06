@@ -36,3 +36,7 @@ VAT/payroll/e-invoice domain DocTypes begin only after these foundation contract
 ## P0 completion criteria
 
 P0 is complete only when all eight foundation DocTypes migrate on a real Frappe v16 site, the setup wizard registers as an app-specific wizard, domain profile sync is idempotent, no external endpoint is enabled by default, and a clean `bench get-app` from the public GitHub repository succeeds.
+
+### Setup preview contract
+
+`preview_localization_profile` returns the exact setup snapshot, SHA-256 hash, warnings and planned changes without writing Company configuration. Applying the wizard uses the same snapshot builder, so preview and apply cannot drift silently. Installation may seed only neutral reference data (`VN Business Profile`); it must never enable a government-facing endpoint or mutate submitted accounting/payroll records.
