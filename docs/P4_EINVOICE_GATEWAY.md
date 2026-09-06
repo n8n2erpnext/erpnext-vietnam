@@ -1,6 +1,6 @@
 # P4 — E-Invoice and Compliance Gateway
 
-Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway orchestration implemented and awaiting live rollback UAT.
+Status: P4A provider-neutral e-invoice preparation deployed; P4B gateway orchestration live rollback gate passed.
 
 ## Legal/source boundary
 
@@ -38,3 +38,10 @@ Transport is double-gated: Company-scoped `enable_compliance_gateway` must be tr
 An ambiguous timeout after Submit is persisted as `UNKNOWN`. The core refuses another Submit while Unknown and requires `RECONCILE`; reconciliation may resolve to Accepted or Rejected. The sandbox adapter deliberately simulates a provider that accepted a request before the timeout, allowing the UAT to prove that the provider Submit call remains exactly one while reconciliation recovers the accepted truth.
 
 The P4B live gate is rollback-only: it temporarily enables the gateway inside a transaction, creates a sandbox endpoint/submission, simulates the ambiguous timeout, verifies blind retry is blocked, reconciles to Accepted, checks GL and Journal Entry counts, then rolls back every setup/endpoint/submission/attempt record. No production adapter and no external network call are present in this checkpoint.
+
+
+## P4B live rollback result — 2026-09-06
+
+On `erp.thaiduy.digital`, the sandbox UAT ran against a Company-scoped temporary configuration entirely inside a rollback transaction. GL Entry stayed 251, Journal Entry stayed 2, and the persistent counts for Localization Settings, Integration Endpoint, Submission and Submission Attempt all returned to their pre-UAT zero state.
+
+The operation sequence was exactly `VALIDATE/SUCCESS → SUBMIT/UNKNOWN → RECONCILE/SUCCESS`; blind re-submit while Unknown was rejected and the sandbox provider submit counter remained exactly 1. Reconciliation recovered `ACCEPTED`. This closes the P4B engineering gate without enabling a real provider or making an external network call.
