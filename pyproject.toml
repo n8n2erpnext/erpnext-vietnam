@@ -1,0 +1,15 @@
+[project]
+name = "erpnext_vietnam"
+version = "0.1.0-dev"
+description = "Universal Vietnam localization and compliance layer for Frappe/ERPNext/HRMS"
+requires-python = ">=3.12"
+readme = "README.md"
+dependencies = []
+
+[build-system]
+requires = ["flit_core>=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
