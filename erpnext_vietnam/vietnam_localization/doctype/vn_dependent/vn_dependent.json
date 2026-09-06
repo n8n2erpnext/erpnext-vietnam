@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "dependent_name",
+  "relationship",
+  "tax_identification_number",
+  "deduction_eligible",
+  "effective_from",
+  "effective_to",
+  "evidence_reference",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "dependent_name",
+   "fieldtype": "Data",
+   "label": "Dependent Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "relationship",
+   "fieldtype": "Data",
+   "label": "Relationship"
+  },
+  {
+   "fieldname": "tax_identification_number",
+   "fieldtype": "Data",
+   "label": "Tax Identification Number"
+  },
+  {
+   "fieldname": "deduction_eligible",
+   "fieldtype": "Check",
+   "label": "Deduction Eligible",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "evidence_reference",
+   "fieldtype": "Data",
+   "label": "Evidence Reference"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN Dependent",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "hash"
+}

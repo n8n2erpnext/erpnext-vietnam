@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "code",
+  "region_name",
+  "monthly_minimum_wage",
+  "hourly_minimum_wage",
+  "currency",
+  "effective_from",
+  "effective_to",
+  "legal_instrument",
+  "legal_reference_detail",
+  "reference_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Region Code",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "region_name",
+   "fieldtype": "Data",
+   "label": "Region Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "monthly_minimum_wage",
+   "fieldtype": "Currency",
+   "label": "Monthly Minimum Wage",
+   "options": "currency",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "hourly_minimum_wage",
+   "fieldtype": "Currency",
+   "label": "Hourly Minimum Wage",
+   "options": "currency"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "default": "VND",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "legal_instrument",
+   "fieldtype": "Link",
+   "label": "Legal Instrument",
+   "options": "VN Legal Instrument"
+  },
+  {
+   "fieldname": "legal_reference_detail",
+   "fieldtype": "Small Text",
+   "label": "Legal Reference Detail"
+  },
+  {
+   "fieldname": "reference_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nReleased\nRetired",
+   "default": "Draft",
+   "reqd": 1
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN Wage Region",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:code"
+}

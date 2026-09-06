@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "social_insurance_number",
+  "participate_bhxh",
+  "participate_bhyt",
+  "participate_bhtn",
+  "participate_oai",
+  "wage_region",
+  "contribution_category",
+  "effective_from",
+  "effective_to",
+  "rule_set",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "social_insurance_number",
+   "fieldtype": "Data",
+   "label": "Social Insurance Number",
+   "search_index": 1
+  },
+  {
+   "fieldname": "participate_bhxh",
+   "fieldtype": "Check",
+   "label": "Participate BHXH",
+   "default": "1"
+  },
+  {
+   "fieldname": "participate_bhyt",
+   "fieldtype": "Check",
+   "label": "Participate BHYT",
+   "default": "1"
+  },
+  {
+   "fieldname": "participate_bhtn",
+   "fieldtype": "Check",
+   "label": "Participate BHTN",
+   "default": "1"
+  },
+  {
+   "fieldname": "participate_oai",
+   "fieldtype": "Check",
+   "label": "Participate BHTNLĐ-BNN",
+   "default": "1"
+  },
+  {
+   "fieldname": "wage_region",
+   "fieldtype": "Link",
+   "label": "Wage Region",
+   "options": "VN Wage Region"
+  },
+  {
+   "fieldname": "contribution_category",
+   "fieldtype": "Select",
+   "label": "Contribution Category",
+   "options": "Ordinary\nSpecial\nExempt\nManual Review",
+   "default": "Ordinary",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "rule_set",
+   "fieldtype": "Link",
+   "label": "Rule Set",
+   "options": "VN Rule Set"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN Social Insurance Profile",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "hash"
+}

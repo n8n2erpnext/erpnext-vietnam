@@ -1,0 +1,139 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "code",
+  "residency",
+  "period_basis",
+  "sequence",
+  "lower_bound",
+  "upper_bound",
+  "rate_percent",
+  "currency",
+  "effective_from",
+  "effective_to",
+  "rule_set",
+  "legal_instrument",
+  "legal_reference_detail",
+  "rule_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "label": "Code",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "residency",
+   "fieldtype": "Select",
+   "label": "Residency",
+   "options": "Resident\nNonresident",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "period_basis",
+   "fieldtype": "Select",
+   "label": "Period Basis",
+   "options": "Monthly\nAnnual",
+   "default": "Monthly",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "lower_bound",
+   "fieldtype": "Currency",
+   "label": "Lower Bound",
+   "options": "currency"
+  },
+  {
+   "fieldname": "upper_bound",
+   "fieldtype": "Currency",
+   "label": "Upper Bound",
+   "options": "currency"
+  },
+  {
+   "fieldname": "rate_percent",
+   "fieldtype": "Float",
+   "label": "Rate (%)",
+   "precision": 6,
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "default": "VND",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "rule_set",
+   "fieldtype": "Link",
+   "label": "Rule Set",
+   "options": "VN Rule Set"
+  },
+  {
+   "fieldname": "legal_instrument",
+   "fieldtype": "Link",
+   "label": "Legal Instrument",
+   "options": "VN Legal Instrument"
+  },
+  {
+   "fieldname": "legal_reference_detail",
+   "fieldtype": "Small Text",
+   "label": "Legal Reference Detail"
+  },
+  {
+   "fieldname": "rule_status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nReleased\nRetired",
+   "default": "Draft",
+   "reqd": 1
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN PIT Bracket",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:code"
+}

@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "line_key",
+  "salary_slip",
+  "employee",
+  "company",
+  "posting_date",
+  "line_type",
+  "base_amount",
+  "rate_percent",
+  "floor_amount",
+  "ceiling_amount",
+  "amount",
+  "currency",
+  "rule_code",
+  "rule_set",
+  "legal_instrument",
+  "legal_reference_detail",
+  "snapshot_hash",
+  "evidence_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "line_key",
+   "fieldtype": "Data",
+   "label": "Line Key",
+   "reqd": 1,
+   "unique": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "salary_slip",
+   "fieldtype": "Link",
+   "label": "Salary Slip",
+   "options": "Salary Slip",
+   "reqd": 1,
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "line_type",
+   "fieldtype": "Select",
+   "label": "Line Type",
+   "options": "PIT_TAXABLE_INCOME\nPIT_INSURANCE_DEDUCTION\nPIT_PERSONAL_DEDUCTION\nPIT_DEPENDENT_DEDUCTION\nPIT_ASSESSABLE_INCOME\nPIT_WITHHOLDING\nBHXH_EE\nBHXH_ER\nBHYT_EE\nBHYT_ER\nBHTN_EE\nBHTN_ER\nOAI_ER",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "base_amount",
+   "fieldtype": "Currency",
+   "label": "Base Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "rate_percent",
+   "fieldtype": "Float",
+   "label": "Rate (%)",
+   "precision": 6
+  },
+  {
+   "fieldname": "floor_amount",
+   "fieldtype": "Currency",
+   "label": "Floor Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "ceiling_amount",
+   "fieldtype": "Currency",
+   "label": "Ceiling Amount",
+   "options": "currency"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Calculated Amount",
+   "options": "currency",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "default": "VND",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rule_code",
+   "fieldtype": "Data",
+   "label": "Rule Code"
+  },
+  {
+   "fieldname": "rule_set",
+   "fieldtype": "Link",
+   "label": "Rule Set",
+   "options": "VN Rule Set"
+  },
+  {
+   "fieldname": "legal_instrument",
+   "fieldtype": "Link",
+   "label": "Legal Instrument",
+   "options": "VN Legal Instrument"
+  },
+  {
+   "fieldname": "legal_reference_detail",
+   "fieldtype": "Small Text",
+   "label": "Legal Reference Detail"
+  },
+  {
+   "fieldname": "snapshot_hash",
+   "fieldtype": "Data",
+   "label": "Snapshot Hash",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "evidence_json",
+   "fieldtype": "Code",
+   "label": "Evidence JSON",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "module": "Vietnam Localization",
+ "name": "VN Payroll Calculation Line",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "HR Manager",
+   "read": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "field:line_key"
+}

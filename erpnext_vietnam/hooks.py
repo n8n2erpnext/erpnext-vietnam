@@ -21,9 +21,13 @@ after_install = "erpnext_vietnam.setup.install.after_install"
 
 after_migrate = "erpnext_vietnam.setup.install.after_migrate"
 
-# P1 additive validation hooks. ERPNext remains the tax calculation and GL engine.
+# Additive P1/P2 hooks. ERPNext/HRMS remain the transaction, tax, payroll and GL engines.
 doc_events = {
     "Item": {"validate": "erpnext_vietnam.vat.service.validate_item"},
     "Sales Invoice": {"validate": "erpnext_vietnam.vat.service.validate_sales_invoice"},
     "Purchase Invoice": {"validate": "erpnext_vietnam.vat.service.validate_purchase_invoice"},
+    "Salary Slip": {
+        "validate": "erpnext_vietnam.payroll.service.validate_salary_slip",
+        "on_submit": "erpnext_vietnam.payroll.service.snapshot_salary_slip",
+    },
 }

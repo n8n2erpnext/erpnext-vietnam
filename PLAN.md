@@ -19,9 +19,10 @@ Status: active implementation
 - [P1C implemented] Read-only pre-declaration VAT reconciliation from native GL + VAT snapshot/evidence coverage; no statutory filing or submission.
 
 ## P2 — Payroll compliance
-- PIT profile/dependents and effective-dated PIT calculation.
-- BHXH/BHYT/BHTN/BHTNLĐ-BNN contribution engine and ceilings.
-- Immutable Salary Slip evidence and employer contribution accrual reconciliation.
+- [P2A implemented] PIT employee profiles/dependents, five-bracket 2026 resident engine, nonresident salary rate, effective-dated family deductions.
+- [P2A implemented] BHXH/BHYT/BHTN/BHTNLĐ-BNN ordinary contribution engine with 2026 reference-level transition and wage-region ceilings.
+- [P2B implemented] Optional-HRMS Salary Component legal metadata + Salary Slip validation and immutable calculation-line snapshots; HRMS remains optional.
+- [P2C pending] Contribution-component mapping/reconciliation to actual HRMS deductions and employer accrual/GL workflow, plus live parallel-payroll UAT.
 
 ## P3 — Statutory declarations
 - 01/GTGT, 05/KK-TNCN, 05/QTT-TNCN canonical declaration models.
